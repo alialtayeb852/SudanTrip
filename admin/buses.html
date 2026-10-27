@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة الباصات - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+          <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+          </div>
+
+            <nav class="main-nav">
+                <a href="../index.html">الرئيسية</a>
+                <a href="../trips.html">الرحلات</a>
+                <a href="../bookings.html">إدارة حجزي</a>
+                <a href="../help.html">المساعدة</a>
+                <a href="dashboard.html" class="admin-nav-link">لوحة الإدارة</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="page-hero-label">
+                لوحة تحكم الإدارة
+            </span>
+
+            <h1>
+                إدارة الباصات
+            </h1>
+
+            <p>
+                إضافة وتعديل وإدارة الباصات المستخدمة في رحلات SudanTrip
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Buses Management -->
+    <main class="admin-buses-section">
+
+        <div class="container">
+
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h2>
+                        الباصات
+                    </h2>
+
+                    <p>
+                        إدارة بيانات الباصات وعدد المقاعد وحالتها التشغيلية.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-page-actions">
+
+                    <a
+                        href="dashboard.html"
+                        class="secondary-btn"
+                    >
+                        العودة للوحة التحكم
+                    </a>
+
+                    <button
+                        type="button"
+                        id="addBusBtn"
+                        class="primary-btn"
+                    >
+                        + إضافة باص
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Add / Edit Bus Form -->
+            <section
+                class="admin-form-card"
+                id="busFormCard"
+            >
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3 id="busFormTitle">
+                            إضافة باص جديد
+                        </h3>
+
+                        <p>
+                            أدخل بيانات الباص ثم احفظ التغييرات.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="busForm">
+
+                    <input
+                        type="hidden"
+                        id="busId"
+                    >
+
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+
+                        <h4>
+                            البيانات الأساسية
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="busCompany">
+                                    شركة النقل
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="busCompany"
+                                    name="busCompany"
+                                    placeholder="مثال: شركة النيل للنقل"
+                                    required
+                                >
+
+                                <small
+                                    id="busCompanyError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="busNumber">
+                                    رقم الباص
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="busNumber"
+                                    name="busNumber"
+                                    placeholder="مثال: SD-2045"
+                                    required
+                                >
+
+                                <small
+                                    id="busNumberError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="busModel">
+                                    الموديل
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="busModel"
+                                    name="busModel"
+                                    placeholder="مثال: Yutong"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="busYear">
+                                    سنة الصنع
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="busYear"
+                                    name="busYear"
+                                    min="1980"
+                                    max="2100"
+                                    placeholder="مثال: 2024"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Capacity -->
+                    <div class="form-section">
+
+                        <h4>
+                            المقاعد
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="busSeats">
+                                    عدد المقاعد
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="busSeats"
+                                    name="busSeats"
+                                    min="1"
+                                    max="100"
+                                    placeholder="مثال: 40"
+                                    required
+                                >
+
+                                <small>
+                                    عدد المقاعد الكلي داخل الباص.
+                                </small>
+
+                                <small
+                                    id="busSeatsError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="busType">
+                                    نوع الباص
+                                </label>
+
+                                <select
+                                    id="busType"
+                                    name="busType"
+                                >
+
+                                    <option value="standard">
+                                        عادي
+                                    </option>
+
+                                    <option value="vip">
+                                        VIP
+                                    </option>
+
+                                    <option value="luxury">
+                                        فاخر
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="busStatus">
+                                    الحالة
+                                </label>
+
+                                <select
+                                    id="busStatus"
+                                    name="busStatus"
+                                >
+
+                                    <option value="active">
+                                        متاح
+                                    </option>
+
+                                    <option value="maintenance">
+                                        في الصيانة
+                                    </option>
+
+                                    <option value="inactive">
+                                        غير متاح
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Notes -->
+                    <div class="form-section">
+
+                        <h4>
+                            ملاحظات
+                        </h4>
+
+                        <div class="form-group">
+
+                            <label for="busNotes">
+                                ملاحظات إضافية
+                            </label>
+
+                            <textarea
+                                id="busNotes"
+                                name="busNotes"
+                                rows="4"
+                                placeholder="اكتب أي ملاحظات عن الباص..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="saveBusBtn"
+                            class="primary-btn"
+                        >
+                            حفظ الباص
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelBusBtn"
+                            class="secondary-btn"
+                        >
+                            إلغاء
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="busFormMessage"
+                        class="form-message"
+                    ></p>
+
+                </form>
+
+            </section>
+
+
+            <!-- Search / Filter -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <h3>
+                            البحث والتصفية
+                        </h3>
+
+                        <p>
+                            ابحث عن باص أو قم بتصفية الباصات حسب الحالة.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="busSearch">
+                            البحث
+                        </label>
+
+                        <input
+                            type="search"
+                            id="busSearch"
+                            placeholder="ابحث برقم الباص أو الشركة..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="busTypeFilter">
+                            النوع
+                        </label>
+
+                        <select id="busTypeFilter">
+
+                            <option value="all">
+                                كل الأنواع
+                            </option>
+
+                            <option value="standard">
+                                عادي
+                            </option>
+
+                            <option value="vip">
+                                VIP
+                            </option>
+
+                            <option value="luxury">
+                                فاخر
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="busStatusFilter">
+                            الحالة
+                        </label>
+
+                        <select id="busStatusFilter">
+
+                            <option value="all">
+                                كل الحالات
+                            </option>
+
+                            <option value="active">
+                                متاح
+                            </option>
+
+                            <option value="maintenance">
+                                في الصيانة
+                            </option>
+
+                            <option value="inactive">
+                                غير متاح
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Buses Table -->
+            <section class="admin-table-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            قائمة الباصات
+                        </h3>
+
+                        <p>
+                            جميع الباصات المسجلة في منصة SudanTrip.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-count">
+
+                        إجمالي الباصات:
+                        <strong id="busesCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>#</th>
+                                <th>الشركة</th>
+                                <th>رقم الباص</th>
+                                <th>الموديل</th>
+                                <th>سنة الصنع</th>
+                                <th>المقاعد</th>
+                                <th>النوع</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="busesTableBody">
+
+                            <!-- JavaScript will insert buses here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="busesEmptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        🚌
+                    </div>
+
+                    <h3>
+                        لا توجد باصات
+                    </h3>
+
+                    <p>
+                        لم يتم العثور على باصات مطابقة للبحث أو التصفية.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyAddBusBtn"
+                        class="primary-btn"
+                    >
+                        + إضافة باص
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>
+                    تنبيه
+                </h3>
+
+                <p>
+                    لا تقم بتعطيل أو حذف باص مرتبط برحلة نشطة أو حجز قائم
+                    إلا بعد التأكد من عدم تأثير ذلك على المسافرين.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    SudanTrip
+                </strong>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    لوحة تحكم الإدارة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be implemented later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

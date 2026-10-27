@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة الحجوزات - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+
+                <a href="../index.html">
+                    الرئيسية
+                </a>
+
+                <a href="../trips.html">
+                    الرحلات
+                </a>
+
+                <a href="../bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="../help.html">
+                    المساعدة
+                </a>
+
+                <a href="dashboard.html" class="admin-nav-link">
+                    لوحة الإدارة
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="page-hero-label">
+                لوحة تحكم الإدارة
+            </span>
+
+            <h1>
+                إدارة الحجوزات
+            </h1>
+
+            <p>
+                عرض ومتابعة وإدارة جميع حجوزات المسافرين في منصة SudanTrip
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Bookings Management -->
+    <main class="admin-bookings-section">
+
+        <div class="container">
+
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h2>
+                        الحجوزات
+                    </h2>
+
+                    <p>
+                        يمكنك البحث عن الحجوزات ومراجعة تفاصيلها وتحديث حالتها.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-page-actions">
+
+                    <a
+                        href="dashboard.html"
+                        class="secondary-btn"
+                    >
+                        العودة للوحة التحكم
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Booking Statistics -->
+            <section class="admin-stats-grid">
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        إجمالي الحجوزات
+                    </span>
+
+                    <strong id="totalBookingsCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        حجوزات مؤكدة
+                    </span>
+
+                    <strong id="confirmedBookingsCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        حجوزات معلقة
+                    </span>
+
+                    <strong id="pendingBookingsCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        حجوزات ملغاة
+                    </span>
+
+                    <strong id="cancelledBookingsCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- Search / Filters -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <h3>
+                            البحث والتصفية
+                        </h3>
+
+                        <p>
+                            ابحث باستخدام رقم الحجز أو بيانات المسافر.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="bookingSearch">
+                            البحث
+                        </label>
+
+                        <input
+                            type="search"
+                            id="bookingSearch"
+                            placeholder="رقم الحجز أو الاسم أو الهاتف..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bookingStatusFilter">
+                            حالة الحجز
+                        </label>
+
+                        <select id="bookingStatusFilter">
+
+                            <option value="all">
+                                كل الحالات
+                            </option>
+
+                            <option value="confirmed">
+                                مؤكد
+                            </option>
+
+                            <option value="pending">
+                                معلق
+                            </option>
+
+                            <option value="cancelled">
+                                ملغي
+                            </option>
+
+                            <option value="completed">
+                                مكتمل
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bookingDateFilter">
+                            تاريخ الرحلة
+                        </label>
+
+                        <input
+                            type="date"
+                            id="bookingDateFilter"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bookingFromFilter">
+                            من
+                        </label>
+
+                        <select id="bookingFromFilter">
+
+                            <option value="">
+                                كل المدن
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bookingToFilter">
+                            إلى
+                        </label>
+
+                        <select id="bookingToFilter">
+
+                            <option value="">
+                                كل المدن
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Bookings Table -->
+            <section class="admin-table-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            قائمة الحجوزات
+                        </h3>
+
+                        <p>
+                            جميع الحجوزات المسجلة في المنصة.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-count">
+
+                        إجمالي النتائج:
+                        <strong id="bookingsCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    رقم الحجز
+                                </th>
+
+                                <th>
+                                    المسافر
+                                </th>
+
+                                <th>
+                                    الهاتف
+                                </th>
+
+                                <th>
+                                    المسار
+                                </th>
+
+                                <th>
+                                    التاريخ
+                                </th>
+
+                                <th>
+                                    المقاعد
+                                </th>
+
+                                <th>
+                                    الإجمالي
+                                </th>
+
+                                <th>
+                                    الحالة
+                                </th>
+
+                                <th>
+                                    الإجراءات
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="bookingsTableBody">
+
+                            <!-- JavaScript will insert bookings here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="bookingsEmptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        🎫
+                    </div>
+
+                    <h3>
+                        لا توجد حجوزات
+                    </h3>
+
+                    <p>
+                        لم يتم العثور على حجوزات مطابقة للبحث أو التصفية.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Booking Details -->
+            <section
+                class="admin-details-card"
+                id="bookingDetailsCard"
+            >
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            تفاصيل الحجز
+                        </h3>
+
+                        <p>
+                            معلومات الحجز والمسافر والرحلة.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="closeBookingDetails"
+                        class="secondary-btn"
+                    >
+                        إغلاق
+                    </button>
+
+                </div>
+
+
+                <div class="booking-details-grid">
+
+                    <!-- Booking Information -->
+                    <div class="details-group">
+
+                        <h4>
+                            معلومات الحجز
+                        </h4>
+
+                        <div class="details-row">
+                            <span>رقم الحجز</span>
+                            <strong id="detailBookingReference">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الحالة</span>
+                            <strong id="detailBookingStatus">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>تاريخ الحجز</span>
+                            <strong id="detailBookingCreatedAt">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الإجمالي</span>
+                            <strong id="detailBookingTotal">-</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Passenger Information -->
+                    <div class="details-group">
+
+                        <h4>
+                            معلومات المسافر
+                        </h4>
+
+                        <div class="details-row">
+                            <span>الاسم</span>
+                            <strong id="detailPassengerName">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الهاتف</span>
+                            <strong id="detailPassengerPhone">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>البريد الإلكتروني</span>
+                            <strong id="detailPassengerEmail">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الجنسية</span>
+                            <strong id="detailPassengerNationality">-</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Trip Information -->
+                    <div class="details-group">
+
+                        <h4>
+                            معلومات الرحلة
+                        </h4>
+
+                        <div class="details-row">
+                            <span>المسار</span>
+                            <strong id="detailTripRoute">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>التاريخ</span>
+                            <strong id="detailTripDate">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>المغادرة</span>
+                            <strong id="detailTripDeparture">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الوصول</span>
+                            <strong id="detailTripArrival">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الشركة</span>
+                            <strong id="detailTripCompany">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الباص</span>
+                            <strong id="detailTripBus">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>المقاعد</span>
+                            <strong id="detailTripSeats">-</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Booking Actions -->
+                <div class="details-actions">
+
+                    <button
+                        type="button"
+                        id="confirmAdminBooking"
+                        class="primary-btn"
+                    >
+                        تأكيد الحجز
+                    </button>
+
+                    <button
+                        type="button"
+                        id="completeAdminBooking"
+                        class="secondary-btn"
+                    >
+                        تحديد كمكتمل
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelAdminBooking"
+                        class="danger-btn"
+                    >
+                        إلغاء الحجز
+                    </button>
+
+                    <button
+                        type="button"
+                        id="printAdminBooking"
+                        class="secondary-btn"
+                    >
+                        طباعة التذكرة
+                    </button>
+
+                    <button
+                        type="button"
+                        id="downloadAdminBookingPdf"
+                        class="secondary-btn"
+                    >
+                        PDF
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="bookingDetailsMessage"
+                    class="form-message"
+                ></p>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>
+                    تنبيه
+                </h3>
+
+                <p>
+                    عند إلغاء حجز، يجب التأكد من تحديث المقاعد المتاحة للرحلة
+                    حتى يتمكن مسافر آخر من حجزها.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    SudanTrip
+                </strong>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    لوحة تحكم الإدارة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be implemented later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

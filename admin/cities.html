@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المدن - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="../index.html">الرئيسية</a>
+                <a href="../trips.html">الرحلات</a>
+                <a href="../bookings.html">إدارة حجزي</a>
+                <a href="../help.html">المساعدة</a>
+                <a href="dashboard.html" class="admin-nav-link">لوحة الإدارة</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="page-hero-label">لوحة تحكم الإدارة</span>
+            <h1>إدارة المدن</h1>
+            <p>
+                إضافة وتعديل وإدارة المدن المتاحة في منصة SudanTrip
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Cities Management -->
+    <main class="admin-cities-section">
+        <div class="container">
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+                    <h2>المدن</h2>
+                    <p>
+                        يمكنك إدارة المدن التي تظهر للمستخدمين عند البحث عن الرحلات.
+                    </p>
+                </div>
+
+                <div class="admin-page-actions">
+                    <a href="dashboard.html" class="secondary-btn">
+                        العودة للوحة التحكم
+                    </a>
+
+                    <button type="button" id="addCityBtn" class="primary-btn">
+                        + إضافة مدينة
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Add / Edit City Form -->
+            <section class="admin-form-card" id="cityFormCard">
+
+                <div class="admin-card-header">
+                    <div>
+                        <h3 id="cityFormTitle">إضافة مدينة</h3>
+                        <p>أدخل بيانات المدينة ثم احفظ التغييرات.</p>
+                    </div>
+                </div>
+
+                <form id="cityForm">
+
+                    <input type="hidden" id="cityId">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="cityName">اسم المدينة</label>
+                            <input
+                                type="text"
+                                id="cityName"
+                                name="cityName"
+                                placeholder="مثال: الخرطوم"
+                                required
+                            >
+                            <small id="cityNameError" class="form-error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cityStatus">حالة المدينة</label>
+
+                            <select id="cityStatus" name="cityStatus">
+                                <option value="active">نشطة</option>
+                                <option value="inactive">معطلة</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="saveCityBtn"
+                            class="primary-btn"
+                        >
+                            حفظ المدينة
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelCityBtn"
+                            class="secondary-btn"
+                        >
+                            إلغاء
+                        </button>
+
+                    </div>
+
+                    <p id="cityFormMessage" class="form-message"></p>
+
+                </form>
+
+            </section>
+
+
+            <!-- Search / Filter -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+                    <div>
+                        <h3>البحث والتصفية</h3>
+                        <p>ابحث عن مدينة أو اعرض المدن حسب حالتها.</p>
+                    </div>
+                </div>
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+                        <label for="citySearch">البحث عن مدينة</label>
+                        <input
+                            type="search"
+                            id="citySearch"
+                            placeholder="اكتب اسم المدينة..."
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cityStatusFilter">الحالة</label>
+
+                        <select id="cityStatusFilter">
+                            <option value="all">كل المدن</option>
+                            <option value="active">المدن النشطة</option>
+                            <option value="inactive">المدن المعطلة</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Cities Table -->
+            <section class="admin-table-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+                        <h3>قائمة المدن</h3>
+                        <p>
+                            جميع المدن المسجلة في منصة SudanTrip.
+                        </p>
+                    </div>
+
+                    <div class="table-count">
+                        إجمالي المدن:
+                        <strong id="citiesCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="admin-table">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم المدينة</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="citiesTableBody">
+
+                            <!-- JavaScript will insert cities here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div id="citiesEmptyState" class="empty-state">
+
+                    <div class="empty-state-icon">🏙️</div>
+
+                    <h3>لا توجد مدن</h3>
+
+                    <p>
+                        لم يتم العثور على مدن مطابقة للبحث أو التصفية.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyAddCityBtn"
+                        class="primary-btn"
+                    >
+                        + إضافة مدينة
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>تنبيه</h3>
+
+                <p>
+                    تعطيل مدينة يمنع ظهورها كخيار جديد للمستخدمين،
+                    لكنه لا يحذف الرحلات أو الحجوزات المرتبطة بها.
+                </p>
+
+            </section>
+
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <strong>SudanTrip</strong>
+                <p>رحلتك تبدأ من هنا</p>
+            </div>
+
+            <div>
+                <p>لوحة تحكم الإدارة</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be added later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

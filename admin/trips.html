@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة الرحلات - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html">الرئيسية</a>
+                <a href="../trips.html">الرحلات</a>
+                <a href="../bookings.html">إدارة حجزي</a>
+                <a href="../help.html">المساعدة</a>
+                <a href="dashboard.html" class="admin-nav-link">لوحة الإدارة</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="page-hero-label">
+                لوحة تحكم الإدارة
+            </span>
+
+            <h1>
+                إدارة الرحلات
+            </h1>
+
+            <p>
+                إضافة وتعديل ومتابعة جميع الرحلات المتاحة على منصة SudanTrip
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Trips Management -->
+    <main class="admin-trips-section">
+
+        <div class="container">
+
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h2>
+                        الرحلات
+                    </h2>
+
+                    <p>
+                        يمكنك إنشاء الرحلات وتعديل بياناتها والتحكم في حالتها.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-page-actions">
+
+                    <a
+                        href="dashboard.html"
+                        class="secondary-btn"
+                    >
+                        العودة للوحة التحكم
+                    </a>
+
+                    <button
+                        type="button"
+                        id="addTripBtn"
+                        class="primary-btn"
+                    >
+                        + إضافة رحلة
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Add / Edit Trip Form -->
+            <section
+                class="admin-form-card"
+                id="tripFormCard"
+            >
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3 id="tripFormTitle">
+                            إضافة رحلة جديدة
+                        </h3>
+
+                        <p>
+                            أدخل بيانات الرحلة بشكل صحيح ثم احفظها.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="tripForm">
+
+                    <input
+                        type="hidden"
+                        id="tripId"
+                    >
+
+
+                    <!-- Route -->
+                    <div class="form-section">
+
+                        <h4>
+                            مسار الرحلة
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="tripFrom">
+                                    مدينة المغادرة
+                                </label>
+
+                                <select
+                                    id="tripFrom"
+                                    name="tripFrom"
+                                    required
+                                >
+
+                                    <option value="">
+                                        اختر مدينة المغادرة
+                                    </option>
+
+                                </select>
+
+                                <small
+                                    id="tripFromError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripTo">
+                                    مدينة الوصول
+                                </label>
+
+                                <select
+                                    id="tripTo"
+                                    name="tripTo"
+                                    required
+                                >
+
+                                    <option value="">
+                                        اختر مدينة الوصول
+                                    </option>
+
+                                </select>
+
+                                <small
+                                    id="tripToError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Date & Time -->
+                    <div class="form-section">
+
+                        <h4>
+                            الموعد
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="tripDate">
+                                    تاريخ الرحلة
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="tripDate"
+                                    name="tripDate"
+                                    required
+                                >
+
+                                <small
+                                    id="tripDateError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripDeparture">
+                                    وقت المغادرة
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="tripDeparture"
+                                    name="tripDeparture"
+                                    required
+                                >
+
+                                <small
+                                    id="tripDepartureError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripArrival">
+                                    وقت الوصول المتوقع
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="tripArrival"
+                                    name="tripArrival"
+                                    required
+                                >
+
+                                <small
+                                    id="tripArrivalError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Company / Bus -->
+                    <div class="form-section">
+
+                        <h4>
+                            بيانات النقل
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="tripCompany">
+                                    شركة النقل
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="tripCompany"
+                                    name="tripCompany"
+                                    placeholder="مثال: شركة النيل للنقل"
+                                    required
+                                >
+
+                                <small
+                                    id="tripCompanyError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripBus">
+                                    الباص
+                                </label>
+
+                                <select
+                                    id="tripBus"
+                                    name="tripBus"
+                                    required
+                                >
+
+                                    <option value="">
+                                        اختر الباص
+                                    </option>
+
+                                </select>
+
+                                <small
+                                    id="tripBusError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Price / Seats -->
+                    <div class="form-section">
+
+                        <h4>
+                            السعر والمقاعد
+                        </h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="tripPrice">
+                                    سعر التذكرة
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="tripPrice"
+                                    name="tripPrice"
+                                    min="0"
+                                    step="500"
+                                    placeholder="مثال: 15000"
+                                    required
+                                >
+
+                                <small>
+                                    السعر بالجنيه السوداني
+                                </small>
+
+                                <small
+                                    id="tripPriceError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripSeats">
+                                    عدد المقاعد
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="tripSeats"
+                                    name="tripSeats"
+                                    min="1"
+                                    max="100"
+                                    placeholder="مثال: 40"
+                                    required
+                                >
+
+                                <small
+                                    id="tripSeatsError"
+                                    class="form-error"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="tripStatus">
+                                    حالة الرحلة
+                                </label>
+
+                                <select
+                                    id="tripStatus"
+                                    name="tripStatus"
+                                >
+
+                                    <option value="active">
+                                        نشطة
+                                    </option>
+
+                                    <option value="inactive">
+                                        معطلة
+                                    </option>
+
+                                    <option value="completed">
+                                        مكتملة
+                                    </option>
+
+                                    <option value="cancelled">
+                                        ملغاة
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="saveTripBtn"
+                            class="primary-btn"
+                        >
+                            حفظ الرحلة
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancelTripBtn"
+                            class="secondary-btn"
+                        >
+                            إلغاء
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="tripFormMessage"
+                        class="form-message"
+                    ></p>
+
+                </form>
+
+            </section>
+
+
+            <!-- Search / Filters -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <h3>
+                            البحث والتصفية
+                        </h3>
+
+                        <p>
+                            ابحث عن رحلة أو قم بتصفية الرحلات حسب بياناتها.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="tripSearch">
+                            البحث
+                        </label>
+
+                        <input
+                            type="search"
+                            id="tripSearch"
+                            placeholder="ابحث بالمدينة أو الشركة..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tripFromFilter">
+                            من
+                        </label>
+
+                        <select id="tripFromFilter">
+
+                            <option value="">
+                                كل المدن
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tripToFilter">
+                            إلى
+                        </label>
+
+                        <select id="tripToFilter">
+
+                            <option value="">
+                                كل المدن
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tripDateFilter">
+                            التاريخ
+                        </label>
+
+                        <input
+                            type="date"
+                            id="tripDateFilter"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tripStatusFilter">
+                            الحالة
+                        </label>
+
+                        <select id="tripStatusFilter">
+
+                            <option value="all">
+                                كل الحالات
+                            </option>
+
+                            <option value="active">
+                                نشطة
+                            </option>
+
+                            <option value="inactive">
+                                معطلة
+                            </option>
+
+                            <option value="completed">
+                                مكتملة
+                            </option>
+
+                            <option value="cancelled">
+                                ملغاة
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Trips Table -->
+            <section class="admin-table-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            قائمة الرحلات
+                        </h3>
+
+                        <p>
+                            جميع الرحلات المسجلة في منصة SudanTrip.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-count">
+
+                        إجمالي الرحلات:
+                        <strong id="tripsCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    المسار
+                                </th>
+
+                                <th>
+                                    التاريخ
+                                </th>
+
+                                <th>
+                                    المغادرة
+                                </th>
+
+                                <th>
+                                    الوصول
+                                </th>
+
+                                <th>
+                                    الشركة
+                                </th>
+
+                                <th>
+                                    الباص
+                                </th>
+
+                                <th>
+                                    السعر
+                                </th>
+
+                                <th>
+                                    المقاعد
+                                </th>
+
+                                <th>
+                                    الحالة
+                                </th>
+
+                                <th>
+                                    الإجراءات
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tripsTableBody">
+
+                            <!-- JavaScript will insert trips here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="tripsEmptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        🚌
+                    </div>
+
+                    <h3>
+                        لا توجد رحلات
+                    </h3>
+
+                    <p>
+                        لم يتم العثور على رحلات مطابقة للبحث أو التصفية.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="emptyAddTripBtn"
+                        class="primary-btn"
+                    >
+                        + إضافة رحلة
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>
+                    تنبيه
+                </h3>
+
+                <p>
+                    تأكد من صحة المدن والتاريخ والأوقات والسعر وعدد المقاعد
+                    قبل نشر الرحلة للمستخدمين.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    SudanTrip
+                </strong>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    لوحة تحكم الإدارة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be implemented later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

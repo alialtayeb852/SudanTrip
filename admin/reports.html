@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>التقارير والإحصائيات - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+          <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+          </div>
+
+            <nav class="main-nav">
+
+                <a href="../index.html">
+                    الرئيسية
+                </a>
+
+                <a href="../trips.html">
+                    الرحلات
+                </a>
+
+                <a href="../bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="../help.html">
+                    المساعدة
+                </a>
+
+                <a href="dashboard.html" class="admin-nav-link">
+                    لوحة الإدارة
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="page-hero-label">
+                لوحة تحكم الإدارة
+            </span>
+
+            <h1>
+                التقارير والإحصائيات
+            </h1>
+
+            <p>
+                متابعة أداء منصة SudanTrip وتحليل الحجوزات والرحلات والإيرادات
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Reports -->
+    <main class="admin-reports-section">
+
+        <div class="container">
+
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h2>
+                        التقارير
+                    </h2>
+
+                    <p>
+                        تقارير شاملة عن الحجوزات والرحلات والمبيعات والإيرادات.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-page-actions">
+
+                    <a
+                        href="dashboard.html"
+                        class="secondary-btn"
+                    >
+                        العودة للوحة التحكم
+                    </a>
+
+                    <button
+                        type="button"
+                        id="printReportBtn"
+                        class="primary-btn"
+                    >
+                        🖨 طباعة التقرير
+                    </button>
+
+                    <button
+                        type="button"
+                        id="downloadReportPdfBtn"
+                        class="secondary-btn"
+                    >
+                        📄 تصدير PDF
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Report Filters -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <h3>
+                            فترة التقرير
+                        </h3>
+
+                        <p>
+                            اختر الفترة التي تريد عرض الإحصائيات الخاصة بها.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="reportStartDate">
+                            من تاريخ
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reportStartDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reportEndDate">
+                            إلى تاريخ
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reportEndDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reportType">
+                            نوع التقرير
+                        </label>
+
+                        <select id="reportType">
+
+                            <option value="all">
+                                تقرير شامل
+                            </option>
+
+                            <option value="bookings">
+                                تقرير الحجوزات
+                            </option>
+
+                            <option value="trips">
+                                تقرير الرحلات
+                            </option>
+
+                            <option value="revenue">
+                                تقرير الإيرادات
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reportStatus">
+                            حالة الحجوزات
+                        </label>
+
+                        <select id="reportStatus">
+
+                            <option value="all">
+                                كل الحالات
+                            </option>
+
+                            <option value="confirmed">
+                                المؤكدة
+                            </option>
+
+                            <option value="completed">
+                                المكتملة
+                            </option>
+
+                            <option value="cancelled">
+                                الملغاة
+                            </option>
+
+                            <option value="pending">
+                                المعلقة
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="generateReportBtn"
+                        class="primary-btn"
+                    >
+                        تحديث التقرير
+                    </button>
+
+                    <button
+                        type="button"
+                        id="resetReportBtn"
+                        class="secondary-btn"
+                    >
+                        إعادة ضبط
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Main Statistics -->
+            <section
+                class="report-section"
+                id="reportDocument"
+            >
+
+                <div class="report-document-header">
+
+                    <div>
+
+                        <h2>
+                            تقرير SudanTrip
+                        </h2>
+
+                        <p>
+                            تقرير إحصائي عن أداء منصة حجز الرحلات
+                        </p>
+
+                    </div>
+
+                    <div class="report-date">
+
+                        <span>
+                            تاريخ إنشاء التقرير
+                        </span>
+
+                        <strong id="reportGeneratedDate">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Main KPI Cards -->
+                <div class="admin-stats-grid report-kpi-grid">
+
+                    <!-- Total Bookings -->
+                    <div class="admin-stat-card report-kpi-card">
+
+                        <span class="admin-stat-label">
+                            إجمالي الحجوزات
+                        </span>
+
+                        <strong id="reportTotalBookings">
+                            0
+                        </strong>
+
+                        <small>
+                            حجز
+                        </small>
+
+                    </div>
+
+
+                    <!-- Total Trips -->
+                    <div class="admin-stat-card report-kpi-card">
+
+                        <span class="admin-stat-label">
+                            إجمالي الرحلات
+                        </span>
+
+                        <strong id="reportTotalTrips">
+                            0
+                        </strong>
+
+                        <small>
+                            رحلة
+                        </small>
+
+                    </div>
+
+
+                    <!-- Total Revenue -->
+                    <div class="admin-stat-card report-kpi-card">
+
+                        <span class="admin-stat-label">
+                            إجمالي الإيرادات
+                        </span>
+
+                        <strong id="reportTotalRevenue">
+                            0
+                        </strong>
+
+                        <small>
+                            جنيه سوداني
+                        </small>
+
+                    </div>
+
+
+                    <!-- Tickets Sold -->
+                    <div class="admin-stat-card report-kpi-card">
+
+                        <span class="admin-stat-label">
+                            عدد التذاكر المباعة
+                        </span>
+
+                        <strong id="reportTicketsSold">
+                            0
+                        </strong>
+
+                        <small>
+                            تذكرة
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Top Routes -->
+                <section class="report-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                أكثر المسارات حجزًا
+                            </h3>
+
+                            <p>
+                                المسارات الأكثر طلبًا حسب عدد الحجوزات.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        الترتيب
+                                    </th>
+
+                                    <th>
+                                        المسار
+                                    </th>
+
+                                    <th>
+                                        عدد الحجوزات
+                                    </th>
+
+                                    <th>
+                                        عدد التذاكر
+                                    </th>
+
+                                    <th>
+                                        الإيرادات
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="topRoutesTableBody">
+
+                                <!-- JavaScript will insert top routes -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Most Requested Cities -->
+                <section class="report-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                أكثر المدن طلبًا
+                            </h3>
+
+                            <p>
+                                المدن الأكثر ظهورًا في عمليات البحث والحجوزات.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        الترتيب
+                                    </th>
+
+                                    <th>
+                                        المدينة
+                                    </th>
+
+                                    <th>
+                                        عدد الحجوزات
+                                    </th>
+
+                                    <th>
+                                        عدد التذاكر
+                                    </th>
+
+                                    <th>
+                                        نسبة الطلب
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="topCitiesTableBody">
+
+                                <!-- JavaScript will insert top cities -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Booking Statistics By Date -->
+                <section class="report-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                إحصائيات الحجوزات حسب التاريخ
+                            </h3>
+
+                            <p>
+                                متابعة عدد الحجوزات والتذاكر والإيرادات يوميًا.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        التاريخ
+                                    </th>
+
+                                    <th>
+                                        عدد الحجوزات
+                                    </th>
+
+                                    <th>
+                                        التذاكر المباعة
+                                    </th>
+
+                                    <th>
+                                        الحجوزات المؤكدة
+                                    </th>
+
+                                    <th>
+                                        الحجوزات الملغاة
+                                    </th>
+
+                                    <th>
+                                        الإيرادات
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="bookingDateStatsBody">
+
+                                <!-- JavaScript will insert date statistics -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Trips Report -->
+                <section class="report-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                تقرير الرحلات
+                            </h3>
+
+                            <p>
+                                ملخص أداء الرحلات وحالة المقاعد والحجوزات.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        الرحلة
+                                    </th>
+
+                                    <th>
+                                        التاريخ
+                                    </th>
+
+                                    <th>
+                                        الشركة
+                                    </th>
+
+                                    <th>
+                                        المقاعد الكلية
+                                    </th>
+
+                                    <th>
+                                        المقاعد المحجوزة
+                                    </th>
+
+                                    <th>
+                                        المقاعد المتاحة
+                                    </th>
+
+                                    <th>
+                                        نسبة الإشغال
+                                    </th>
+
+                                    <th>
+                                        الإيرادات
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tripsReportBody">
+
+                                <!-- JavaScript will insert trips report -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Revenue Report -->
+                <section class="report-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                تقرير الإيرادات
+                            </h3>
+
+                            <p>
+                                تحليل الإيرادات الناتجة عن الحجوزات والتذاكر المباعة.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="revenue-summary-grid">
+
+                        <div class="revenue-summary-item">
+
+                            <span>
+                                إجمالي الإيرادات
+                            </span>
+
+                            <strong id="revenueTotal">
+                                0 جنيه
+                            </strong>
+
+                        </div>
+
+
+                        <div class="revenue-summary-item">
+
+                            <span>
+                                متوسط قيمة الحجز
+                            </span>
+
+                            <strong id="revenueAverageBooking">
+                                0 جنيه
+                            </strong>
+
+                        </div>
+
+
+                        <div class="revenue-summary-item">
+
+                            <span>
+                                أعلى رحلة إيرادًا
+                            </span>
+
+                            <strong id="highestRevenueTrip">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="revenue-summary-item">
+
+                            <span>
+                                إجمالي التذاكر
+                            </span>
+
+                            <strong id="revenueTickets">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="admin-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        الفترة
+                                    </th>
+
+                                    <th>
+                                        عدد الحجوزات
+                                    </th>
+
+                                    <th>
+                                        التذاكر
+                                    </th>
+
+                                    <th>
+                                        الإيرادات
+                                    </th>
+
+                                    <th>
+                                        متوسط الحجز
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="revenueReportBody">
+
+                                <!-- JavaScript will insert revenue report -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Report Summary -->
+                <section class="report-card report-summary-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h3>
+                                ملخص التقرير
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="reportSummary">
+
+                        <p>
+                            سيتم إنشاء ملخص التقرير تلقائيًا بعد تحديث البيانات.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- Export / Print Actions -->
+            <section class="report-actions-card">
+
+                <div>
+
+                    <h3>
+                        حفظ التقرير
+                    </h3>
+
+                    <p>
+                        يمكنك طباعة التقرير أو تصديره كملف PDF للاحتفاظ به أو مشاركته.
+                    </p>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="printReportBottomBtn"
+                        class="primary-btn"
+                    >
+                        🖨 طباعة التقرير
+                    </button>
+
+                    <button
+                        type="button"
+                        id="downloadReportPdfBottomBtn"
+                        class="secondary-btn"
+                    >
+                        📄 تصدير PDF
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>
+                    تنبيه
+                </h3>
+
+                <p>
+                    تعتمد التقارير على بيانات الحجوزات والرحلات المسجلة في المنصة.
+                    عند ربط الموقع بقاعدة بيانات حقيقية مستقبلًا، سيتم تحديث هذه
+                    التقارير مباشرة من البيانات الفعلية.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    SudanTrip
+                </strong>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    لوحة تحكم الإدارة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be implemented later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>

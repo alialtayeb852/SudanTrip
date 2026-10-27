@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لوحة التحكم - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+
+            <nav class="main-nav">
+
+                <a href="../index.html">
+                    الرئيسية
+                </a>
+
+                <a href="../index.html#search">
+                    البحث عن رحلة
+                </a>
+
+                <a href="../bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="../help.html">
+                    المساعدة
+                </a>
+
+                <a
+                    href="dashboard.html"
+                    class="admin-link active">
+                    الإدارة
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <h1>
+                لوحة تحكم الإدارة
+            </h1>
+
+            <p>
+                إدارة ومتابعة منصة SudanTrip
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ADMIN MAIN ================= -->
+    <main class="admin-dashboard-section">
+
+        <div class="container">
+
+
+            <!-- ================= ADMIN HEADER ================= -->
+            <section class="admin-dashboard-header">
+
+                <div>
+
+                    <span class="admin-welcome-label">
+                        لوحة الإدارة
+                    </span>
+
+                    <h2>
+                        مرحباً بك في SudanTrip
+                    </h2>
+
+                    <p>
+                        من هنا يمكنك إدارة الرحلات والحافلات والمدن
+                        والحجوزات ومتابعة إحصائيات المنصة.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-dashboard-actions">
+
+                    <a
+                        href="../index.html"
+                        class="secondary-btn">
+                        عرض الموقع
+                    </a>
+
+                    <button
+                        type="button"
+                        id="adminLogoutBtn"
+                        class="danger-btn">
+                        تسجيل الخروج
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= STATISTICS ================= -->
+            <section class="admin-stats-grid">
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        C
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            المدن
+                        </span>
+
+                        <strong id="statCities">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        T
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            الرحلات
+                        </span>
+
+                        <strong id="statTrips">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        B
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            الحافلات
+                        </span>
+
+                        <strong id="statBuses">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        R
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            الحجوزات
+                        </span>
+
+                        <strong id="statBookings">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        U
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            المستخدمون
+                        </span>
+
+                        <strong id="statUsers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <div class="admin-stat-icon">
+                        S
+                    </div>
+
+                    <div class="admin-stat-content">
+
+                        <span>
+                            المقاعد المحجوزة
+                        </span>
+
+                        <strong id="statReservedSeats">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= QUICK MANAGEMENT ================= -->
+            <section class="admin-management-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        الإدارة السريعة
+                    </h2>
+
+                    <p>
+                        الوصول المباشر إلى أقسام لوحة التحكم
+                    </p>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+
+                    <!-- CITIES -->
+                    <a
+                        href="cities.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                إدارة المدن
+                            </h3>
+
+                            <p>
+                                إضافة وتعديل وتعطيل وحذف المدن
+                                المتاحة في المنصة.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <!-- TRIPS -->
+                    <a
+                        href="trips.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                إدارة الرحلات
+                            </h3>
+
+                            <p>
+                                إنشاء الرحلات وتعديل بياناتها
+                                ومتابعة حالتها.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <!-- BUSES -->
+                    <a
+                        href="buses.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                إدارة الحافلات
+                            </h3>
+
+                            <p>
+                                إضافة الحافلات وتحديد السعة
+                                والبيانات الخاصة بها.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <!-- BOOKINGS -->
+                    <a
+                        href="bookings.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            04
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                إدارة الحجوزات
+                            </h3>
+
+                            <p>
+                                متابعة جميع الحجوزات والبحث عنها
+                                وإدارة حالتها.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <!-- USERS -->
+                    <a
+                        href="users.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            05
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                إدارة المستخدمين
+                            </h3>
+
+                            <p>
+                                عرض المستخدمين ومتابعة بياناتهم
+                                وحالة حساباتهم.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <!-- REPORTS -->
+                    <a
+                        href="reports.html"
+                        class="admin-management-card">
+
+                        <div class="admin-management-icon">
+                            06
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                التقارير
+                            </h3>
+
+                            <p>
+                                عرض الإحصائيات والتقارير الخاصة
+                                بالرحلات والحجوزات.
+                            </p>
+
+                        </div>
+
+                        <span class="management-arrow">
+                            ←
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= RECENT BOOKINGS ================= -->
+            <section class="admin-recent-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            أحدث الحجوزات
+                        </h2>
+
+                        <p>
+                            آخر الحجوزات المسجلة في المنصة
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="bookings.html"
+                        class="secondary-btn">
+                        عرض جميع الحجوزات
+                    </a>
+
+                </div>
+
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    رقم الحجز
+                                </th>
+
+                                <th>
+                                    المسافر
+                                </th>
+
+                                <th>
+                                    الرحلة
+                                </th>
+
+                                <th>
+                                    التاريخ
+                                </th>
+
+                                <th>
+                                    المبلغ
+                                </th>
+
+                                <th>
+                                    الحالة
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recentBookingsBody">
+
+                            <tr>
+
+                                <td colspan="6" class="empty-table">
+                                    لا توجد حجوزات حالياً
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= QUICK NOTICE ================= -->
+            <section class="admin-notice">
+
+                <div class="admin-notice-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <h3>
+                        تنبيه الإدارة
+                    </h3>
+
+                    <p>
+                        تأكد من تحديث بيانات الرحلات والحافلات والمدن
+                        بشكل مستمر حتى تظهر المعلومات الصحيحة للمسافرين.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+                    SudanTrip
+                </div>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    الرئيسية
+                </a>
+
+                <a href="../bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="../help.html">
+                    المساعدة
+                </a>
+
+            </div>
+
+
+            <div class="footer-copy">
+
+                <p>
+                    © 2026 SudanTrip — جميع الحقوق محفوظة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>

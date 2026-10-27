@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة المستخدمين - SudanTrip</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+            <nav class="main-nav">
+
+                <a href="../index.html">
+                    الرئيسية
+                </a>
+
+                <a href="../trips.html">
+                    الرحلات
+                </a>
+
+                <a href="../bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="../help.html">
+                    المساعدة
+                </a>
+
+                <a href="dashboard.html" class="admin-nav-link">
+                    لوحة الإدارة
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="page-hero-label">
+                لوحة تحكم الإدارة
+            </span>
+
+            <h1>
+                إدارة المستخدمين
+            </h1>
+
+            <p>
+                عرض وإدارة بيانات المستخدمين المسجلين في منصة SudanTrip
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Users Management -->
+    <main class="admin-users-section">
+
+        <div class="container">
+
+
+            <!-- Page Header -->
+            <div class="admin-page-header">
+
+                <div>
+
+                    <h2>
+                        المستخدمون
+                    </h2>
+
+                    <p>
+                        متابعة المستخدمين وحالة حساباتهم ونشاطهم في المنصة.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-page-actions">
+
+                    <a
+                        href="dashboard.html"
+                        class="secondary-btn"
+                    >
+                        العودة للوحة التحكم
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- User Statistics -->
+            <section class="admin-stats-grid">
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        إجمالي المستخدمين
+                    </span>
+
+                    <strong id="totalUsersCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        المستخدمون النشطون
+                    </span>
+
+                    <strong id="activeUsersCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        المستخدمون المعطلون
+                    </span>
+
+                    <strong id="inactiveUsersCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        مستخدمو اليوم
+                    </span>
+
+                    <strong id="todayUsersCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- Search / Filters -->
+            <section class="admin-filter-card">
+
+                <div class="filter-header">
+
+                    <div>
+
+                        <h3>
+                            البحث والتصفية
+                        </h3>
+
+                        <p>
+                            ابحث عن مستخدم باستخدام الاسم أو البريد الإلكتروني أو الهاتف.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="userSearch">
+                            البحث
+                        </label>
+
+                        <input
+                            type="search"
+                            id="userSearch"
+                            placeholder="الاسم أو البريد أو الهاتف..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="userStatusFilter">
+                            الحالة
+                        </label>
+
+                        <select id="userStatusFilter">
+
+                            <option value="all">
+                                كل المستخدمين
+                            </option>
+
+                            <option value="active">
+                                نشط
+                            </option>
+
+                            <option value="inactive">
+                                معطل
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="userSort">
+                            ترتيب حسب
+                        </label>
+
+                        <select id="userSort">
+
+                            <option value="newest">
+                                الأحدث تسجيلًا
+                            </option>
+
+                            <option value="oldest">
+                                الأقدم تسجيلًا
+                            </option>
+
+                            <option value="name">
+                                الاسم
+                            </option>
+
+                            <option value="bookings">
+                                عدد الحجوزات
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Users Table -->
+            <section class="admin-table-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            قائمة المستخدمين
+                        </h3>
+
+                        <p>
+                            جميع المستخدمين المسجلين في المنصة.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-count">
+
+                        إجمالي النتائج:
+                        <strong id="usersCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    الاسم
+                                </th>
+
+                                <th>
+                                    الهاتف
+                                </th>
+
+                                <th>
+                                    البريد الإلكتروني
+                                </th>
+
+                                <th>
+                                    تاريخ التسجيل
+                                </th>
+
+                                <th>
+                                    الحجوزات
+                                </th>
+
+                                <th>
+                                    الحالة
+                                </th>
+
+                                <th>
+                                    الإجراءات
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="usersTableBody">
+
+                            <!-- JavaScript will insert users here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="usersEmptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        لا يوجد مستخدمون
+                    </h3>
+
+                    <p>
+                        لم يتم العثور على مستخدمين مطابقين للبحث أو التصفية.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- User Details -->
+            <section
+                class="admin-details-card"
+                id="userDetailsCard"
+            >
+
+                <div class="admin-card-header">
+
+                    <div>
+
+                        <h3>
+                            تفاصيل المستخدم
+                        </h3>
+
+                        <p>
+                            معلومات الحساب ونشاط المستخدم.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="closeUserDetails"
+                        class="secondary-btn"
+                    >
+                        إغلاق
+                    </button>
+
+                </div>
+
+
+                <div class="user-details-grid">
+
+                    <!-- Personal Information -->
+                    <div class="details-group">
+
+                        <h4>
+                            البيانات الشخصية
+                        </h4>
+
+                        <div class="details-row">
+                            <span>الاسم</span>
+                            <strong id="detailUserName">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الهاتف</span>
+                            <strong id="detailUserPhone">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>البريد الإلكتروني</span>
+                            <strong id="detailUserEmail">-</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Account Information -->
+                    <div class="details-group">
+
+                        <h4>
+                            معلومات الحساب
+                        </h4>
+
+                        <div class="details-row">
+                            <span>رقم المستخدم</span>
+                            <strong id="detailUserId">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>تاريخ التسجيل</span>
+                            <strong id="detailUserCreatedAt">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>الحالة</span>
+                            <strong id="detailUserStatus">-</strong>
+                        </div>
+
+                        <div class="details-row">
+                            <span>عدد الحجوزات</span>
+                            <strong id="detailUserBookings">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- User Actions -->
+                <div class="details-actions">
+
+                    <button
+                        type="button"
+                        id="activateUserBtn"
+                        class="primary-btn"
+                    >
+                        تفعيل المستخدم
+                    </button>
+
+                    <button
+                        type="button"
+                        id="deactivateUserBtn"
+                        class="danger-btn"
+                    >
+                        تعطيل المستخدم
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="userDetailsMessage"
+                    class="form-message"
+                ></p>
+
+            </section>
+
+
+            <!-- Admin Notice -->
+            <section class="admin-notice">
+
+                <h3>
+                    تنبيه
+                </h3>
+
+                <p>
+                    تعطيل المستخدم يمنعه من استخدام الحساب، ولا يؤدي إلى حذف
+                    الحجوزات أو البيانات المرتبطة به.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    SudanTrip
+                </strong>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    لوحة تحكم الإدارة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript will be implemented later -->
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>
