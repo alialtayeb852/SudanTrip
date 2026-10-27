@@ -1682,3 +1682,36 @@ select:focus-visible {
         padding-top: 55px;
     }
 }
+
+/* =====================================================
+   DESTINATIONS — FIX SPACING
+   ===================================================== */
+
+.destinations-grid {
+    gap: 28px;
+}
+
+.destination-card {
+    margin: 0;
+}
+
+/* Tablet */
+@media (max-width: 1050px) {
+    .destinations-grid {
+        gap: 22px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+    .destinations-grid {
+        gap: 18px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .destinations-grid {
+        gap: 16px;
+    }
+}
