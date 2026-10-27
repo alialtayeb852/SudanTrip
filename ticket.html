@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SudanTrip | تذكرتي</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="search.html">
+                    البحث عن رحلة
+                </a>
+
+                <a href="bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="help.html">
+                    المساعدة
+                </a>
+
+            </nav>
+
+            <a href="admin/login.html" class="admin-link">
+                الإدارة
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <h1>
+                    تذكرة السفر
+                </h1>
+
+                <p>
+                    تفاصيل حجزك ورحلتك محفوظة هنا.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="ticket-section">
+
+            <div class="container">
+
+                <!-- منطقة التذكرة التي سيتم تحويلها إلى PDF لاحقاً -->
+
+                <div id="ticketDocument" class="ticket-document">
+
+                    <!-- رأس التذكرة -->
+
+                    <div class="ticket-header">
+
+                        <div class="ticket-brand">
+
+                            <strong>
+                                SudanTrip
+                            </strong>
+
+                            <span>
+                                رحلتك تبدأ من هنا
+                            </span>
+
+                        </div>
+
+                        <div class="ticket-status">
+                            مؤكد
+                        </div>
+
+                    </div>
+
+
+                    <!-- رقم الحجز -->
+
+                    <div class="booking-number">
+
+                        <span>
+                            رقم الحجز
+                        </span>
+
+                        <strong id="bookingReference">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <!-- معلومات الرحلة -->
+
+                    <div class="ticket-route">
+
+                        <div class="route-city">
+
+                            <span>
+                                المغادرة
+                            </span>
+
+                            <strong id="ticketFrom">
+                                —
+                            </strong>
+
+                            <small id="ticketDeparture">
+                                —
+                            </small>
+
+                        </div>
+
+
+                        <div class="route-arrow">
+                            ←
+                        </div>
+
+
+                        <div class="route-city">
+
+                            <span>
+                                الوصول
+                            </span>
+
+                            <strong id="ticketTo">
+                                —
+                            </strong>
+
+                            <small id="ticketArrival">
+                                —
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- تفاصيل الرحلة -->
+
+                    <div class="ticket-details">
+
+                        <div class="ticket-detail">
+
+                            <span>
+                                تاريخ السفر
+                            </span>
+
+                            <strong id="ticketDate">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ticket-detail">
+
+                            <span>
+                                شركة النقل
+                            </span>
+
+                            <strong id="ticketCompany">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ticket-detail">
+
+                            <span>
+                                نوع الحافلة
+                            </span>
+
+                            <strong id="ticketBus">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="ticket-detail">
+
+                            <span>
+                                المقاعد
+                            </span>
+
+                            <strong id="ticketSeats">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- بيانات المسافر -->
+
+                    <div class="ticket-passenger">
+
+                        <h2>
+                            بيانات المسافر
+                        </h2>
+
+                        <div class="passenger-details">
+
+                            <div>
+
+                                <span>
+                                    الاسم
+                                </span>
+
+                                <strong id="ticketPassengerName">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    الهاتف
+                                </span>
+
+                                <strong id="ticketPhone">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    البريد الإلكتروني
+                                </span>
+
+                                <strong id="ticketEmail">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    الجنسية
+                                </span>
+
+                                <strong id="ticketNationality">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- المبلغ -->
+
+                    <div class="ticket-total">
+
+                        <span>
+                            إجمالي قيمة الحجز
+                        </span>
+
+                        <strong id="ticketTotal">
+                            0 جنيه
+                        </strong>
+
+                    </div>
+
+
+                    <!-- تعليمات -->
+
+                    <div class="ticket-notes">
+
+                        <h2>
+                            ملاحظات مهمة
+                        </h2>
+
+                        <ul>
+
+                            <li>
+                                يرجى الحضور قبل موعد المغادرة بوقت كافٍ.
+                            </li>
+
+                            <li>
+                                يرجى إبراز التذكرة عند الصعود إلى الحافلة.
+                            </li>
+
+                            <li>
+                                احتفظ برقم الحجز لإدارة الحجز أو إلغائه.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- مكان QR Code مستقبلاً -->
+
+                    <div class="ticket-qr">
+
+                        <div id="qrCode">
+                            QR
+                        </div>
+
+                        <span>
+                            رمز الحجز
+                        </span>
+
+                    </div>
+
+
+                    <!-- التذييل -->
+
+                    <div class="ticket-footer">
+
+                        <strong>
+                            SudanTrip
+                        </strong>
+
+                        <span>
+                            رحلتك تبدأ من هنا
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- أزرار التذكرة -->
+
+                <div class="ticket-actions">
+
+                    <button
+                        type="button"
+                        id="printTicket"
+                        class="btn">
+
+                        طباعة التذكرة
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="downloadTicketPdf"
+                        class="btn">
+
+                        تحميل التذكرة PDF
+
+                    </button>
+
+
+                    <a
+                        href="index.html"
+                        class="btn secondary-btn">
+
+                        العودة للرئيسية
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+
+                    <strong>
+                        SudanTrip
+                    </strong>
+
+                    <p>
+                        رحلتك تبدأ من هنا
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        الرئيسية
+                    </a>
+
+                    <a href="bookings.html">
+                        إدارة حجزي
+                    </a>
+
+                    <a href="help.html">
+                        المساعدة
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                جميع الحقوق محفوظة © SudanTrip
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

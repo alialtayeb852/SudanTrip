@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إتمام الحجز - SudanTrip</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="index.html#search">البحث عن رحلة</a>
+                <a href="bookings.html">إدارة حجزي</a>
+                <a href="help.html">المساعدة</a>
+                <a href="admin/login.html" class="admin-link">الإدارة</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+
+        <div class="container">
+
+            <h1>إتمام الحجز</h1>
+
+            <p>
+                أكمل بيانات المسافر لتأكيد حجز رحلتك
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="booking-section">
+
+        <div class="container booking-container">
+
+
+            <!-- ================= TRIP INFORMATION ================= -->
+            <section class="booking-trip-card">
+
+                <div class="section-heading">
+
+                    <h2>تفاصيل الرحلة</h2>
+
+                    <p>
+                        راجع بيانات الرحلة والمقاعد قبل تأكيد الحجز
+                    </p>
+
+                </div>
+
+
+                <div id="bookingTripInfo" class="booking-trip-info">
+
+                    <div class="booking-route">
+
+                        <div class="booking-location">
+
+                            <span class="booking-label">
+                                من
+                            </span>
+
+                            <strong id="bookingFrom">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="booking-arrow">
+                            ←
+                        </div>
+
+
+                        <div class="booking-location">
+
+                            <span class="booking-label">
+                                إلى
+                            </span>
+
+                            <strong id="bookingTo">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="booking-trip-details">
+
+                        <div class="booking-detail">
+                            <span>التاريخ</span>
+                            <strong id="bookingDate">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>المغادرة</span>
+                            <strong id="bookingDeparture">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>الوصول</span>
+                            <strong id="bookingArrival">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>شركة النقل</span>
+                            <strong id="bookingCompany">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>رقم الحافلة</span>
+                            <strong id="bookingBus">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>المقاعد</span>
+                            <strong id="bookingSeats">—</strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>عدد المسافرين</span>
+                            <strong id="bookingPassengers">—</strong>
+                        </div>
+
+                        <div class="booking-detail booking-total">
+                            <span>الإجمالي</span>
+                            <strong id="bookingTotal">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PASSENGER FORM ================= -->
+            <section class="booking-form-card">
+
+                <div class="section-heading">
+
+                    <h2>بيانات المسافر</h2>
+
+                    <p>
+                        أدخل بيانات صحيحة حتى يمكن التواصل معك وإدارة حجزك
+                    </p>
+
+                </div>
+
+
+                <form id="bookingForm" novalidate>
+
+
+                    <!-- NAME -->
+                    <div class="form-group">
+
+                        <label for="passengerName">
+                            الاسم الكامل
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="passengerName"
+                            name="passengerName"
+                            placeholder="أدخل الاسم الكامل"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <small
+                            id="passengerNameError"
+                            class="field-error">
+                        </small>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+                    <div class="form-group">
+
+                        <label for="phone">
+                            رقم الهاتف
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="مثال: 09XXXXXXXX"
+                            autocomplete="tel"
+                            required
+                        >
+
+                        <small
+                            id="phoneError"
+                            class="field-error">
+                        </small>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            البريد الإلكتروني
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            id="emailError"
+                            class="field-error">
+                        </small>
+
+                    </div>
+
+
+                    <!-- NATIONALITY -->
+                    <div class="form-group">
+
+                        <label for="nationality">
+                            الجنسية
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="nationality"
+                            name="nationality"
+                            required
+                        >
+
+                            <option value="">
+                                اختر الجنسية
+                            </option>
+
+                            <option value="سوداني">
+                                سوداني
+                            </option>
+
+                            <option value="أخرى">
+                                أخرى
+                            </option>
+
+                        </select>
+
+                        <small
+                            id="nationalityError"
+                            class="field-error">
+                        </small>
+
+                    </div>
+
+
+                    <!-- NOTES -->
+                    <div class="form-group full-width">
+
+                        <label for="notes">
+                            ملاحظات إضافية
+                            <span class="optional">
+                                (اختياري)
+                            </span>
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="4"
+                            placeholder="أدخل أي ملاحظات إضافية..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+                    <div class="booking-terms">
+
+                        <label class="checkbox-label">
+
+                            <input
+                                type="checkbox"
+                                id="agreeTerms"
+                                name="agreeTerms"
+                                required
+                            >
+
+                            <span>
+                                أوافق على شروط وأحكام الحجز وأؤكد صحة
+                                البيانات المدخلة.
+                            </span>
+
+                        </label>
+
+                        <small
+                            id="termsError"
+                            class="field-error">
+                        </small>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+                    <div
+                        id="bookingMessage"
+                        class="booking-message"
+                        role="alert"
+                        aria-live="polite">
+                    </div>
+
+
+                    <!-- ACTIONS -->
+                    <div class="booking-actions">
+
+                        <a
+                            href="seats.html"
+                            class="secondary-btn">
+                            العودة للمقاعد
+                        </a>
+
+                        <button
+                            type="submit"
+                            id="confirmBookingBtn"
+                            class="primary-btn">
+                            تأكيد الحجز
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= NOTICE ================= -->
+            <section class="booking-notice">
+
+                <div class="notice-icon">
+                    !
+                </div>
+
+                <div class="notice-content">
+
+                    <h3>
+                        تنبيه مهم
+                    </h3>
+
+                    <p>
+                        بعد تأكيد الحجز سيتم إنشاء رقم حجز خاص بك وإصدار
+                        التذكرة الإلكترونية. احتفظ برقم الحجز والبريد
+                        الإلكتروني ورقم الهاتف لاستخدامها لاحقاً في إدارة
+                        حجزك.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+                    SudanTrip
+                </div>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="help.html">
+                    المساعدة
+                </a>
+
+            </div>
+
+
+            <div class="footer-copy">
+
+                <p>
+                    © 2026 SudanTrip — جميع الحقوق محفوظة
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/booking.js"></script>
+
+</body>
+</html>

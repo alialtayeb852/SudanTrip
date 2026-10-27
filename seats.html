@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SudanTrip | اختيار المقاعد</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="search.html">البحث عن رحلة</a>
+                <a href="bookings.html">إدارة حجزي</a>
+                <a href="help.html">المساعدة</a>
+            </nav>
+
+            <a href="admin/login.html" class="admin-link">
+                الإدارة
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+            <div class="container">
+
+                <h1>اختيار المقاعد</h1>
+
+                <p>
+                    اختر المقعد المناسب لك قبل متابعة الحجز.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="seats-section">
+
+            <div class="container">
+
+                <div id="tripInfo" class="seat-trip-info"></div>
+
+                <div class="seat-layout-wrapper">
+
+                    <div class="bus-title">
+                        مقدمة الحافلة
+                    </div>
+
+                    <div id="seatsContainer" class="seats-container">
+                    </div>
+
+                    <div class="seat-legend">
+
+                        <div class="legend-item">
+                            <span class="legend-seat available"></span>
+                            <span>متاح</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-seat selected"></span>
+                            <span>مختار</span>
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-seat booked"></span>
+                            <span>محجوز</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="selected-seats-box">
+
+                    <div>
+                        <span>المقاعد المختارة</span>
+                        <strong id="selectedSeatsText">
+                            لم يتم اختيار مقاعد
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>الإجمالي</span>
+                        <strong id="totalPrice">
+                            0 جنيه
+                        </strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="continueBooking"
+                        class="btn"
+                        disabled>
+                        متابعة الحجز
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+                    <strong>SudanTrip</strong>
+                    <p>رحلتك تبدأ من هنا</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="bookings.html">إدارة حجزي</a>
+                    <a href="help.html">المساعدة</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة © SudanTrip
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        const selectedTrip =
+            JSON.parse(
+                localStorage.getItem(
+                    "sudantrip_selected_trip"
+                )
+            );
+
+        const searchData =
+            JSON.parse(
+                localStorage.getItem(
+                    "sudantrip_search"
+                )
+            );
+
+        let selectedSeats = [];
+
+        function showTripInfo() {
+
+            const tripInfo =
+                document.getElementById("tripInfo");
+
+            if (!tripInfo || !selectedTrip) {
+                return;
+            }
+
+            tripInfo.innerHTML = `
+
+                <div class="seat-info-item">
+                    <span>الرحلة</span>
+                    <strong>
+                        ${selectedTrip.from}
+                        ←
+                        ${selectedTrip.to}
+                    </strong>
+                </div>
+
+                <div class="seat-info-item">
+                    <span>شركة النقل</span>
+                    <strong>
+                        ${selectedTrip.company}
+                    </strong>
+                </div>
+
+                <div class="seat-info-item">
+                    <span>المغادرة</span>
+                    <strong>
+                        ${selectedTrip.departure}
+                    </strong>
+                </div>
+
+                <div class="seat-info-item">
+                    <span>السعر للمقعد</span>
+                    <strong>
+                        ${Number(selectedTrip.price).toLocaleString("ar-SD")}
+                        جنيه
+                    </strong>
+                </div>
+
+            `;
+        }
+
+        function createSeats() {
+
+            const seatsContainer =
+                document.getElementById(
+                    "seatsContainer"
+                );
+
+            if (!seatsContainer || !selectedTrip) {
+                return;
+            }
+
+            const totalSeats =
+                Number(selectedTrip.seats) || 40;
+
+            seatsContainer.innerHTML = "";
+
+            const rows =
+                Math.ceil(totalSeats / 4);
+
+            for (let row = 1; row <= rows; row++) {
+
+                const rowElement =
+                    document.createElement("div");
+
+                rowElement.className =
+                    "seat-row";
+
+                const leftSide =
+                    document.createElement("div");
+
+                leftSide.className =
+                    "seat-side";
+
+                const rightSide =
+                    document.createElement("div");
+
+                rightSide.className =
+                    "seat-side";
+
+                for (let position = 1; position <= 4; position++) {
+
+                    const seatNumber =
+                        ((row - 1) * 4) + position;
+
+                    if (seatNumber > totalSeats) {
+                        continue;
+                    }
+
+                    const seat =
+                        document.createElement("button");
+
+                    seat.type = "button";
+
+                    seat.className =
+                        "seat available";
+
+                    seat.textContent =
+                        seatNumber;
+
+                    seat.dataset.seat =
+                        seatNumber;
+
+                    /*
+                     * مقاعد تجريبية محجوزة
+                     * لاحقاً ستأتي من قاعدة البيانات
+                     */
+                    if (
+                        seatNumber === 3 ||
+                        seatNumber === 8 ||
+                        seatNumber === 15 ||
+                        seatNumber === 22
+                    ) {
+
+                        seat.classList.remove(
+                            "available"
+                        );
+
+                        seat.classList.add(
+                            "booked"
+                        );
+
+                        seat.disabled = true;
+                    }
+
+                    if (position <= 2) {
+                        leftSide.appendChild(seat);
+                    } else {
+                        rightSide.appendChild(seat);
+                    }
+
+                }
+
+                rowElement.appendChild(leftSide);
+
+                const aisle =
+                    document.createElement("div");
+
+                aisle.className = "seat-aisle";
+
+                rowElement.appendChild(aisle);
+
+                rowElement.appendChild(rightSide);
+
+                seatsContainer.appendChild(
+                    rowElement
+                );
+            }
+
+            setupSeatSelection();
+        }
+
+        function setupSeatSelection() {
+
+            const seats =
+                document.querySelectorAll(
+                    ".seat.available"
+                );
+
+            seats.forEach(function(seat) {
+
+                seat.addEventListener(
+                    "click",
+                    function() {
+
+                        const seatNumber =
+                            Number(
+                                this.dataset.seat
+                            );
+
+                        const passengerCount =
+                            searchData
+                                ? Number(
+                                    searchData.passengers
+                                )
+                                : 1;
+
+                        if (
+                            selectedSeats.includes(
+                                seatNumber
+                            )
+                        ) {
+
+                            selectedSeats =
+                                selectedSeats.filter(
+                                    function(number) {
+                                        return number !== seatNumber;
+                                    }
+                                );
+
+                            this.classList.remove(
+                                "selected"
+                            );
+
+                        } else {
+
+                            if (
+                                selectedSeats.length >=
+                                passengerCount
+                            ) {
+
+                                alert(
+                                    "يمكنك اختيار " +
+                                    passengerCount +
+                                    " مقعد فقط."
+                                );
+
+                                return;
+                            }
+
+                            selectedSeats.push(
+                                seatNumber
+                            );
+
+                            this.classList.add(
+                                "selected"
+                            );
+                        }
+
+                        updateSelection();
+                    }
+                );
+            });
+        }
+
+        function updateSelection() {
+
+            const selectedSeatsText =
+                document.getElementById(
+                    "selectedSeatsText"
+                );
+
+            const totalPrice =
+                document.getElementById(
+                    "totalPrice"
+                );
+
+            const continueButton =
+                document.getElementById(
+                    "continueBooking"
+                );
+
+            const passengerCount =
+                searchData
+                    ? Number(searchData.passengers)
+                    : 1;
+
+            if (selectedSeats.length === 0) {
+
+                selectedSeatsText.textContent =
+                    "لم يتم اختيار مقاعد";
+
+            } else {
+
+                selectedSeats.sort(
+                    function(a, b) {
+                        return a - b;
+                    }
+                );
+
+                selectedSeatsText.textContent =
+                    selectedSeats.join(" ، ");
+            }
+
+            const total =
+                selectedSeats.length *
+                Number(selectedTrip.price);
+
+            totalPrice.textContent =
+                total.toLocaleString("ar-SD") +
+                " جنيه";
+
+            continueButton.disabled =
+                selectedSeats.length !==
+                passengerCount;
+        }
+
+        function continueToBooking() {
+
+            const passengerCount =
+                searchData
+                    ? Number(searchData.passengers)
+                    : 1;
+
+            if (
+                selectedSeats.length !==
+                passengerCount
+            ) {
+
+                alert(
+                    "الرجاء اختيار " +
+                    passengerCount +
+                    " مقعد."
+                );
+
+                return;
+            }
+
+            const seatData = {
+
+                trip: selectedTrip,
+
+                seats: selectedSeats,
+
+                passengers: passengerCount,
+
+                total:
+                    selectedSeats.length *
+                    Number(selectedTrip.price)
+            };
+
+            localStorage.setItem(
+                "sudantrip_seat_selection",
+                JSON.stringify(seatData)
+            );
+
+            window.location.href =
+                "booking.html";
+        }
+
+        function initializeSeatsPage() {
+
+            if (!selectedTrip) {
+
+                alert(
+                    "لم يتم اختيار رحلة."
+                );
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+            showTripInfo();
+
+            createSeats();
+
+            updateSelection();
+
+            document
+                .getElementById("continueBooking")
+                .addEventListener(
+                    "click",
+                    continueToBooking
+                );
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeSeatsPage
+        );
+
+    </script>
+
+</body>
+
+</html>

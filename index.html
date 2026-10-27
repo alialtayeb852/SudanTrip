@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SudanTrip | رحلتك تبدأ من هنا</title>
+
+    <!-- CSS سيتم ربطه في الخطوة القادمة -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Header / Navigation
+    ========================== -->
+    <header class="main-header">
+
+        <div class="container">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="search.html">البحث عن رحلة</a>
+                <a href="bookings.html">إدارة حجزي</a>
+                <a href="help.html">المساعدة</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="admin/login.html" class="admin-link">
+                    إدارة المنصة
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         Hero Section
+    ========================== -->
+    <main>
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <p class="hero-small-title">
+                        سافر داخل السودان بسهولة
+                    </p>
+
+                    <h1>
+                        رحلتك تبدأ من هنا
+                    </h1>
+
+                    <p class="hero-description">
+                        احجز تذكرتك، اختر مقعدك، وانطلق إلى وجهتك
+                        بكل سهولة وأمان.
+                    </p>
+
+                </div>
+
+
+                <!-- Advertisement -->
+                <div class="hero-ad">
+
+                    <span class="ad-label">
+                        إعلان
+                    </span>
+
+                    <h2>
+                        وجهتك أقرب مما تتخيل
+                    </h2>
+
+                    <p>
+                        اكتشف الرحلات المتاحة واحجز مقعدك الآن.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     Search Box
+                ========================== -->
+
+                <div class="search-box">
+
+                    <div class="search-title">
+                        <h2>ابحث عن رحلتك</h2>
+
+                        <p>
+                            اختر مدينة المغادرة ووجهتك وتاريخ السفر
+                        </p>
+                    </div>
+
+
+                    <form id="searchForm">
+
+                        <!-- From -->
+                        <div class="form-group">
+
+                            <label for="fromCity">
+                                من
+                            </label>
+
+                            <select id="fromCity" name="fromCity" required>
+
+                                <option value="">
+                                    اختر مدينة المغادرة
+                                </option>
+
+                                <option value="الخرطوم">
+                                    الخرطوم
+                                </option>
+
+                                <option value="مدني">
+                                    مدني
+                                </option>
+
+                                <option value="الدويم">
+                                    الدويم
+                                </option>
+
+                                <option value="القضارف">
+                                    القضارف
+                                </option>
+
+                                <option value="كسلا">
+                                    كسلا
+                                </option>
+
+                                <option value="كوستي">
+                                    كوستي
+                                </option>
+
+                                <option value="أم درمان">
+                                    أم درمان
+                                </option>
+
+                                <option value="بورتسودان">
+                                    بورتسودان
+                                </option>
+
+                                <option value="سواكن">
+                                    سواكن
+                                </option>
+
+                                <option value="نيالا">
+                                    نيالا
+                                </option>
+
+                                <option value="الفاشر">
+                                    الفاشر
+                                </option>
+
+                                <option value="الجنينة">
+                                    الجنينة
+                                </option>
+
+                                <option value="زالنجي">
+                                    زالنجي
+                                </option>
+
+                                <option value="القطينة">
+                                    القطينة
+                                </option>
+
+                                <option value="جبل أولياء">
+                                    جبل أولياء
+                                </option>
+
+                                <option value="ربك">
+                                    ربك
+                                </option>
+
+                                <option value="سنار">
+                                    سنار
+                                </option>
+
+                                <option value="المناقل">
+                                    المناقل
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- To -->
+                        <div class="form-group">
+
+                            <label for="toCity">
+                                إلى
+                            </label>
+
+                            <select id="toCity" name="toCity" required>
+
+                                <option value="">
+                                    اختر وجهتك
+                                </option>
+
+                                <option value="الخرطوم">
+                                    الخرطوم
+                                </option>
+
+                                <option value="مدني">
+                                    مدني
+                                </option>
+
+                                <option value="الدويم">
+                                    الدويم
+                                </option>
+
+                                <option value="القضارف">
+                                    القضارف
+                                </option>
+
+                                <option value="كسلا">
+                                    كسلا
+                                </option>
+
+                                <option value="كوستي">
+                                    كوستي
+                                </option>
+
+                                <option value="أم درمان">
+                                    أم درمان
+                                </option>
+
+                                <option value="بورتسودان">
+                                    بورتسودان
+                                </option>
+
+                                <option value="سواكن">
+                                    سواكن
+                                </option>
+
+                                <option value="نيالا">
+                                    نيالا
+                                </option>
+
+                                <option value="الفاشر">
+                                    الفاشر
+                                </option>
+
+                                <option value="الجنينة">
+                                    الجنينة
+                                </option>
+
+                                <option value="زالنجي">
+                                    زالنجي
+                                </option>
+
+                                <option value="القطينة">
+                                    القطينة
+                                </option>
+
+                                <option value="جبل أولياء">
+                                    جبل أولياء
+                                </option>
+
+                                <option value="ربك">
+                                    ربك
+                                </option>
+
+                                <option value="سنار">
+                                    سنار
+                                </option>
+
+                                <option value="المناقل">
+                                    المناقل
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Date -->
+                        <div class="form-group">
+
+                            <label for="travelDate">
+                                تاريخ السفر
+                            </label>
+
+                            <input
+                                type="date"
+                                id="travelDate"
+                                name="travelDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Passengers -->
+                        <div class="form-group">
+
+                            <label for="passengers">
+                                عدد المسافرين
+                            </label>
+
+                            <select
+                                id="passengers"
+                                name="passengers"
+                                required
+                            >
+
+                                <option value="1">
+                                    مسافر واحد
+                                </option>
+
+                                <option value="2">
+                                    مسافران
+                                </option>
+
+                                <option value="3">
+                                    3 مسافرين
+                                </option>
+
+                                <option value="4">
+                                    4 مسافرين
+                                </option>
+
+                                <option value="5">
+                                    5 مسافرين
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Search Button -->
+                        <button
+                            type="submit"
+                            class="search-button"
+                        >
+                            بحث عن رحلة
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Why SudanTrip
+        ========================== -->
+
+        <section class="features">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>
+                        لماذا SudanTrip؟
+                    </span>
+
+                    <h2>
+                        كل ما تحتاجه لرحلتك في مكان واحد
+                    </h2>
+
+                    <p>
+                        نسعى لتوفير تجربة سهلة وسريعة لحجز رحلات
+                        الباصات بين المدن.
+                    </p>
+
+                </div>
+
+
+                <div class="features-grid">
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🎫
+                        </div>
+
+                        <h3>
+                            حجز سهل
+                        </h3>
+
+                        <p>
+                            احجز تذكرتك بسهولة دون الحاجة إلى إنشاء حساب.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            💺
+                        </div>
+
+                        <h3>
+                            اختر مقعدك
+                        </h3>
+
+                        <p>
+                            شاهد المقاعد المتاحة واختر المقعد المناسب لك.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            📱
+                        </div>
+
+                        <h3>
+                            إدارة حجزك
+                        </h3>
+
+                        <p>
+                            يمكنك الوصول إلى حجزك باستخدام البريد الإلكتروني
+                            ورقم الهاتف.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🚌
+                        </div>
+
+                        <h3>
+                            رحلات متعددة
+                        </h3>
+
+                        <p>
+                            ابحث عن الرحلات بين المدن المتاحة واحجز رحلتك.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             How It Works
+        ========================== -->
+
+        <section class="how-it-works">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>
+                        كيف تحجز؟
+                    </span>
+
+                    <h2>
+                        أربع خطوات وتكون جاهزًا للرحلة
+                    </h2>
+
+                </div>
+
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <span class="step-number">
+                            01
+                        </span>
+
+                        <h3>
+                            ابحث
+                        </h3>
+
+                        <p>
+                            اختر مدينة المغادرة والوجهة وتاريخ السفر.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <span class="step-number">
+                            02
+                        </span>
+
+                        <h3>
+                            اختر الرحلة
+                        </h3>
+
+                        <p>
+                            قارن الرحلات المتاحة واختر الرحلة المناسبة.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <span class="step-number">
+                            03
+                        </span>
+
+                        <h3>
+                            اختر مقعدك
+                        </h3>
+
+                        <p>
+                            اختر المقعد الذي تفضله داخل الباص.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <span class="step-number">
+                            04
+                        </span>
+
+                        <h3>
+                            أكد الحجز
+                        </h3>
+
+                        <p>
+                            أدخل بياناتك واحصل على تذكرتك.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Manage Booking
+        ========================== -->
+
+        <section class="manage-booking">
+
+            <div class="container">
+
+                <div class="manage-content">
+
+                    <span>
+                        لديك حجز سابق؟
+                    </span>
+
+                    <h2>
+                        إدارة أو إلغاء حجزك بسهولة
+                    </h2>
+
+                    <p>
+                        لا تحتاج إلى كلمة مرور.
+                        استخدم البريد الإلكتروني ورقم الهاتف
+                        المرتبطين بالحجز للوصول إليه.
+                    </p>
+
+                    <a href="bookings.html" class="manage-button">
+                        إدارة حجزي
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <div class="footer-brand">
+
+                <h2>
+                    SudanTrip
+                </h2>
+
+                <p>
+                    رحلتك تبدأ من هنا
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="search.html">
+                    البحث عن رحلة
+                </a>
+
+                <a href="bookings.html">
+                    إدارة حجزي
+                </a>
+
+                <a href="help.html">
+                    المساعدة
+                </a>
+
+            </div>
+
+
+            <div class="footer-copy">
+
+                <p>
+                    © 2026 SudanTrip. جميع الحقوق محفوظة.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript سيتم ربطه في الخطوات القادمة -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

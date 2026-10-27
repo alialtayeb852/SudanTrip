@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SudanTrip | الرحلات المتاحة</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+
+            <div class="logo">
+    <a href="index.html" class="brand-logo" aria-label="SudanTrip - رحلتك تبدأ من هنا">
+        <span class="brand-mark" aria-hidden="true">
+            <span class="logo-s">S</span><span class="logo-u">U</span><span class="logo-t">T</span>
+        </span>
+
+        <span class="brand-info">
+            <span class="brand-name">SudanTrip</span>
+            <span class="brand-tagline">رحلتك تبدأ من هنا</span>
+        </span>
+    </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="search.html">البحث عن رحلة</a>
+                <a href="bookings.html">إدارة حجزي</a>
+                <a href="help.html">المساعدة</a>
+            </nav>
+
+            <a href="admin/login.html" class="admin-link">
+                الإدارة
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="page-hero">
+            <div class="container">
+
+                <h1>الرحلات المتاحة</h1>
+
+                <p>
+                    اختر الرحلة المناسبة لك لإكمال عملية الحجز.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="trips-section">
+
+            <div class="container">
+
+                <div id="searchSummary" class="search-summary"></div>
+
+                <div id="tripsContainer" class="trips-container">
+
+                    <div class="loading-message">
+                        جاري تحميل الرحلات...
+                    </div>
+
+                </div>
+
+                <div id="noTripsMessage" class="no-trips" hidden>
+
+                    <h2>لا توجد رحلات متاحة</h2>
+
+                    <p>
+                        لم نجد رحلات مطابقة لبيانات البحث الحالية.
+                    </p>
+
+                    <a href="index.html" class="btn">
+                        تعديل البحث
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+                    <strong>SudanTrip</strong>
+                    <p>رحلتك تبدأ من هنا</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="bookings.html">إدارة حجزي</a>
+                    <a href="help.html">المساعدة</a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة © SudanTrip
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        const TRIPS_STORAGE_KEY = "sudantrip_trips";
+
+        const DEMO_TRIPS = [
+            {
+                id: "TRIP-001",
+                company: "شركة النيل للنقل",
+                bus: "حافلة سياحية",
+                from: "الخرطوم",
+                to: "مدني",
+                departure: "07:00",
+                arrival: "10:30",
+                price: 15000,
+                seats: 40
+            },
+            {
+                id: "TRIP-002",
+                company: "شركة النيل للنقل",
+                bus: "حافلة VIP",
+                from: "الخرطوم",
+                to: "مدني",
+                departure: "10:00",
+                arrival: "13:30",
+                price: 20000,
+                seats: 30
+            },
+            {
+                id: "TRIP-003",
+                company: "شركة الجزيرة للنقل",
+                bus: "حافلة سياحية",
+                from: "الخرطوم",
+                to: "مدني",
+                departure: "14:00",
+                arrival: "17:30",
+                price: 15000,
+                seats: 45
+            },
+            {
+                id: "TRIP-004",
+                company: "شركة النيل للنقل",
+                bus: "حافلة سياحية",
+                from: "مدني",
+                to: "الخرطوم",
+                departure: "08:00",
+                arrival: "11:30",
+                price: 15000,
+                seats: 40
+            },
+            {
+                id: "TRIP-005",
+                company: "شركة الجزيرة للنقل",
+                bus: "حافلة VIP",
+                from: "مدني",
+                to: "الدويم",
+                departure: "09:00",
+                arrival: "13:00",
+                price: 18000,
+                seats: 35
+            },
+            {
+                id: "TRIP-006",
+                company: "شركة النيل للنقل",
+                bus: "حافلة سياحية",
+                from: "الخرطوم",
+                to: "القضارف",
+                departure: "06:30",
+                arrival: "11:30",
+                price: 22000,
+                seats: 40
+            }
+        ];
+
+        function initializeTrips() {
+
+            const savedTrips =
+                localStorage.getItem(TRIPS_STORAGE_KEY);
+
+            if (!savedTrips) {
+
+                localStorage.setItem(
+                    TRIPS_STORAGE_KEY,
+                    JSON.stringify(DEMO_TRIPS)
+                );
+            }
+        }
+
+        function getTrips() {
+
+            const savedTrips =
+                localStorage.getItem(TRIPS_STORAGE_KEY);
+
+            if (!savedTrips) {
+                return [];
+            }
+
+            try {
+
+                const trips = JSON.parse(savedTrips);
+
+                return Array.isArray(trips) ? trips : [];
+
+            } catch (error) {
+
+                console.error(
+                    "حدث خطأ أثناء قراءة الرحلات:",
+                    error
+                );
+
+                return [];
+            }
+        }
+
+        function getSearchData() {
+
+            const savedSearch =
+                localStorage.getItem("sudantrip_search");
+
+            if (!savedSearch) {
+                return null;
+            }
+
+            try {
+
+                return JSON.parse(savedSearch);
+
+            } catch (error) {
+
+                console.error(
+                    "حدث خطأ أثناء قراءة بيانات البحث:",
+                    error
+                );
+
+                return null;
+            }
+        }
+
+        function formatPrice(price) {
+
+            return Number(price).toLocaleString("ar-SD") +
+                " جنيه";
+        }
+
+        function displaySearchSummary(searchData) {
+
+            const summary =
+                document.getElementById("searchSummary");
+
+            if (!summary || !searchData) {
+                return;
+            }
+
+            summary.innerHTML = `
+                <div class="summary-item">
+                    <span>من</span>
+                    <strong>${searchData.from}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>إلى</span>
+                    <strong>${searchData.to}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>تاريخ السفر</span>
+                    <strong>${searchData.date}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>عدد المسافرين</span>
+                    <strong>${searchData.passengers}</strong>
+                </div>
+            `;
+        }
+
+        function getAvailableTrips(searchData) {
+
+            const trips = getTrips();
+
+            if (!searchData) {
+                return [];
+            }
+
+            return trips.filter(function(trip) {
+
+                return (
+                    trip.from === searchData.from &&
+                    trip.to === searchData.to &&
+                    Number(trip.seats) > 0
+                );
+
+            });
+        }
+
+        function displayTrips(trips, searchData) {
+
+            const container =
+                document.getElementById("tripsContainer");
+
+            const noTripsMessage =
+                document.getElementById("noTripsMessage");
+
+            if (!container) {
+                return;
+            }
+
+            if (!trips.length) {
+
+                container.innerHTML = "";
+
+                if (noTripsMessage) {
+                    noTripsMessage.hidden = false;
+                }
+
+                return;
+            }
+
+            if (noTripsMessage) {
+                noTripsMessage.hidden = true;
+            }
+
+            container.innerHTML = "";
+
+            trips.forEach(function(trip) {
+
+                const card =
+                    document.createElement("article");
+
+                card.className = "trip-card";
+
+                card.innerHTML = `
+
+                    <div class="trip-card-header">
+
+                        <div>
+                            <span class="trip-company">
+                                ${trip.company}
+                            </span>
+
+                            <h2>
+                                ${trip.from}
+                                <span>←</span>
+                                ${trip.to}
+                            </h2>
+                        </div>
+
+                        <span class="trip-price">
+                            ${formatPrice(trip.price)}
+                        </span>
+
+                    </div>
+
+                    <div class="trip-details">
+
+                        <div class="trip-detail">
+                            <span>المغادرة</span>
+                            <strong>${trip.departure}</strong>
+                        </div>
+
+                        <div class="trip-detail">
+                            <span>الوصول</span>
+                            <strong>${trip.arrival}</strong>
+                        </div>
+
+                        <div class="trip-detail">
+                            <span>الحافلة</span>
+                            <strong>${trip.bus}</strong>
+                        </div>
+
+                        <div class="trip-detail">
+                            <span>المقاعد المتاحة</span>
+                            <strong>${trip.seats}</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="trip-card-footer">
+
+                        <span>
+                            ${searchData.passengers} مسافر
+                        </span>
+
+                        <button
+                            type="button"
+                            class="btn select-trip-btn"
+                            data-trip-id="${trip.id}">
+                            اختيار الرحلة
+                        </button>
+
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            const buttons =
+                document.querySelectorAll(".select-trip-btn");
+
+            buttons.forEach(function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        const tripId =
+                            this.getAttribute("data-trip-id");
+
+                        const selectedTrip =
+                            trips.find(function(trip) {
+                                return trip.id === tripId;
+                            });
+
+                        if (!selectedTrip) {
+                            return;
+                        }
+
+                        localStorage.setItem(
+                            "sudantrip_selected_trip",
+                            JSON.stringify(selectedTrip)
+                        );
+
+                        window.location.href =
+                            "seats.html";
+                    }
+                );
+            });
+        }
+
+        function initializeTripsPage() {
+
+            initializeTrips();
+
+            const searchData =
+                getSearchData();
+
+            if (!searchData) {
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+            displaySearchSummary(searchData);
+
+            const availableTrips =
+                getAvailableTrips(searchData);
+
+            displayTrips(
+                availableTrips,
+                searchData
+            );
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeTripsPage
+        );
+
+    </script>
+
+</body>
+
+</html>
