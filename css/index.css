@@ -1592,3 +1592,93 @@ select:focus-visible {
         min-height: 300px;
     }
     }
+
+/* =====================================================
+   FINAL FIX
+   SEARCH PANEL STAYS INSIDE THE BLUE HERO
+   ===================================================== */
+
+.hero {
+    min-height: 720px;
+}
+
+.hero-inner {
+    min-height: 720px;
+    padding-bottom: 190px;
+}
+
+/* Search box stays completely inside the hero */
+.search-panel {
+    bottom: 38px;
+}
+
+/* The next section starts normally after the hero */
+.section {
+    padding-top: 85px;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1050px) {
+
+    .hero {
+        min-height: 735px;
+    }
+
+    .hero-inner {
+        min-height: 735px;
+        padding-bottom: 190px;
+    }
+
+    .search-panel {
+        bottom: 35px;
+    }
+
+    .section {
+        padding-top: 85px;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 760px) {
+
+    .hero {
+        min-height: 790px;
+    }
+
+    .hero-inner {
+        min-height: 790px;
+        padding-bottom: 210px;
+    }
+
+    .search-panel {
+        bottom: 32px;
+    }
+
+    .section {
+        padding-top: 65px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+    .hero {
+        min-height: 850px;
+    }
+
+    .hero-inner {
+        min-height: 850px;
+        padding-bottom: 230px;
+    }
+
+    .search-panel {
+        bottom: 28px;
+    }
+
+    .section {
+        padding-top: 55px;
+    }
+}
