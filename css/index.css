@@ -1836,3 +1836,122 @@ select:focus-visible {
         min-height: 225px;
     }
 }
+
+/* =====================================================
+   HOW IT WORKS — FINAL LAYOUT
+   ===================================================== */
+
+.how-it-works {
+    padding-top: 75px;
+    padding-bottom: 45px;
+}
+
+.how-it-works .steps {
+    width: 100%;
+    max-width: 1050px;
+    margin: 28px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 30px;
+}
+
+.how-it-works .step {
+    width: 100%;
+    min-width: 0;
+    min-height: 150px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 24px;
+
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(20, 44, 80, .055);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.how-it-works .step:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(20, 44, 80, .09);
+}
+
+.how-it-works .step-number {
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    color: #ffffff;
+    background: linear-gradient(
+        145deg,
+        var(--blue),
+        var(--blue-dark)
+    );
+
+    font-size: .85rem;
+    font-weight: 800;
+}
+
+.how-it-works .step h3 {
+    margin: 0 0 7px;
+
+    color: var(--ink);
+    font-size: .98rem;
+    font-weight: 800;
+}
+
+.how-it-works .step p {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: .76rem;
+    line-height: 1.85;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 760px) {
+
+    .how-it-works {
+        padding-top: 60px;
+        padding-bottom: 35px;
+    }
+
+    .how-it-works .steps {
+        gap: 18px;
+    }
+
+    .how-it-works .step {
+        padding: 20px;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .how-it-works .steps {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 24px;
+    }
+
+    .how-it-works .step {
+        min-height: auto;
+        padding: 20px;
+    }
+    }
