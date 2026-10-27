@@ -1955,3 +1955,13 @@ select:focus-visible {
         padding: 20px;
     }
     }
+
+/* تقليل المسافة بين كيف تعمل المنصة والفوتر */
+
+.how-it-works {
+    padding-bottom: 20px !important;
+}
+
+.site-footer {
+    margin-top: 0 !important;
+}
