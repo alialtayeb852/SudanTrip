@@ -1683,49 +1683,43 @@ select:focus-visible {
     }
 }
 
-/* =====================================================
-   BEAUTIFUL DESTINATIONS GRID
-   ===================================================== */
+/* ================= DESTINATIONS GRID FIX ================= */
 
-.destinations-grid {
-    width: min(980px, 100%);
+.destination-grid {
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
 
-    column-gap: 34px;
-    row-gap: 30px;
-
-    justify-content: center;
     align-items: stretch;
 }
 
 .destination-card {
     width: 100%;
-    min-height: 255px;
+    min-width: 0;
+    min-height: 260px;
     margin: 0;
 
-    border-radius: 24px;
+    border-radius: 22px;
+    overflow: hidden;
 }
 
 /* ================= TABLET ================= */
 
 @media (max-width: 900px) {
-
-    .destinations-grid {
-        width: min(720px, 100%);
-        column-gap: 24px;
-        row-gap: 24px;
+    .destination-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
     }
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 650px) {
-
-    .destinations-grid {
-        width: min(430px, 100%);
+@media (max-width: 620px) {
+    .destination-grid {
         grid-template-columns: 1fr;
         gap: 18px;
     }
