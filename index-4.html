@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SudanTrip - منصة حجز رحلات الباصات داخل السودان">
+    <title>SudanTrip | رحلتك تبدأ من هنا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand" aria-label="SudanTrip">
+                <span class="brand-mark">
+                    <span class="brand-mark-line"></span>
+                    <span class="brand-mark-dot"></span>
+                </span>
+                <span class="brand-copy">
+                    <strong>SudanTrip</strong>
+                    <small>رحلتك تبدأ من هنا</small>
+                </span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="main-nav" aria-label="التنقل الرئيسي">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="search.html">البحث عن رحلة</a>
+                <a href="bookings.html">إدارة حجزي</a>
+                <a href="help.html">المساعدة</a>
+            </nav>
+
+            <a href="admin/login.html" class="admin-link">
+                <span class="admin-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/>
+                        <path d="M4 21a8 8 0 0 1 16 0"/>
+                    </svg>
+                </span>
+                <span>إدارة المنصة</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <div class="hero-orb hero-orb-one"></div>
+            <div class="hero-orb hero-orb-two"></div>
+            <div class="hero-route route-one"></div>
+            <div class="hero-route route-two"></div>
+
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <span class="eyebrow light-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        السفر داخل السودان أصبح أسهل
+                    </span>
+
+                    <h1>رحلتك تبدأ من هنا<span>.</span></h1>
+
+                    <p>
+                        ابحث عن رحلتك، اختر مقعدك واحجز تذكرتك
+                        من مكان واحد — ببساطة ووضوح.
+                    </p>
+
+                    <div class="hero-trust">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="m5 12 4 4L19 6"/>
+                            </svg>
+                            حجز سريع
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="m5 12 4 4L19 6"/>
+                            </svg>
+                            اختيار المقعد
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="m5 12 4 4L19 6"/>
+                            </svg>
+                            تذكرة رقمية
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="visual-glow"></div>
+                    <div class="route-card">
+                        <div class="route-card-top">
+                            <span>رحلتك القادمة</span>
+                            <span class="status-dot">متاح</span>
+                        </div>
+                        <div class="route-line">
+                            <div class="city-point">
+                                <strong>الخرطوم</strong>
+                                <small>المغادرة</small>
+                            </div>
+                            <div class="route-middle">
+                                <span class="bus-mini">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <rect x="4" y="4" width="16" height="14" rx="3"/>
+                                        <path d="M7 18v2M17 18v2M4 10h16M7 7h.01M17 7h.01"/>
+                                    </svg>
+                                </span>
+                                <i></i><i></i><i></i>
+                            </div>
+                            <div class="city-point destination">
+                                <strong>مدني</strong>
+                                <small>الوصول</small>
+                            </div>
+                        </div>
+                        <div class="route-meta">
+                            <span>اليوم · 08:30 ص</span>
+                            <span>مقاعد متاحة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= SEARCH ================= -->
+                <div class="search-panel">
+                    <div class="search-panel-head">
+                        <div>
+                            <span class="search-kicker">ابدأ رحلتك</span>
+                            <h2>أين تريد الذهاب؟</h2>
+                        </div>
+                        <span class="search-hint">اختر تفاصيل الرحلة ثم اضغط بحث</span>
+                    </div>
+
+                    <form id="searchForm" class="search-form">
+                        <div class="field field-city">
+                            <label for="fromCity">من</label>
+                            <div class="field-control">
+                                <span class="field-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/>
+                                        <circle cx="12" cy="9" r="2.2"/>
+                                    </svg>
+                                </span>
+                                <select id="fromCity" name="fromCity" required>
+                                    <option value="">اختر مدينة المغادرة</option>
+                                    <option value="الخرطوم">الخرطوم</option>
+                                    <option value="مدني">مدني</option>
+                                    <option value="الدويم">الدويم</option>
+                                    <option value="القضارف">القضارف</option>
+                                    <option value="كسلا">كسلا</option>
+                                    <option value="كوستي">كوستي</option>
+                                    <option value="أم درمان">أم درمان</option>
+                                    <option value="بورتسودان">بورتسودان</option>
+                                    <option value="سواكن">سواكن</option>
+                                    <option value="نيالا">نيالا</option>
+                                    <option value="الفاشر">الفاشر</option>
+                                    <option value="الجنينة">الجنينة</option>
+                                    <option value="زالنجي">زالنجي</option>
+                                    <option value="القطينة">القطينة</option>
+                                    <option value="جبل أولياء">جبل أولياء</option>
+                                    <option value="ربك">ربك</option>
+                                    <option value="سنار">سنار</option>
+                                    <option value="المناقل">المناقل</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="swap-button" type="button" aria-label="تبديل المدن">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 7h11l-3-3M17 17H6l3 3"/>
+                            </svg>
+                        </button>
+
+                        <div class="field field-city">
+                            <label for="toCity">إلى</label>
+                            <div class="field-control">
+                                <span class="field-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/>
+                                        <circle cx="12" cy="9" r="2.2"/>
+                                    </svg>
+                                </span>
+                                <select id="toCity" name="toCity" required>
+                                    <option value="">اختر وجهتك</option>
+                                    <option value="الخرطوم">الخرطوم</option>
+                                    <option value="مدني">مدني</option>
+                                    <option value="الدويم">الدويم</option>
+                                    <option value="القضارف">القضارف</option>
+                                    <option value="كسلا">كسلا</option>
+                                    <option value="كوستي">كوستي</option>
+                                    <option value="أم درمان">أم درمان</option>
+                                    <option value="بورتسودان">بورتسودان</option>
+                                    <option value="سواكن">سواكن</option>
+                                    <option value="نيالا">نيالا</option>
+                                    <option value="الفاشر">الفاشر</option>
+                                    <option value="الجنينة">الجنينة</option>
+                                    <option value="زالنجي">زالنجي</option>
+                                    <option value="القطينة">القطينة</option>
+                                    <option value="جبل أولياء">جبل أولياء</option>
+                                    <option value="ربك">ربك</option>
+                                    <option value="سنار">سنار</option>
+                                    <option value="المناقل">المناقل</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="travelDate">تاريخ السفر</label>
+                            <div class="field-control">
+                                <span class="field-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <rect x="3.5" y="5" width="17" height="15.5" rx="2"/>
+                                        <path d="M7 3v4M17 3v4M3.5 9.5h17"/>
+                                    </svg>
+                                </span>
+                                <input type="date" id="travelDate" name="travelDate" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="passengers">المسافرون</label>
+                            <div class="field-control">
+                                <span class="field-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <circle cx="9" cy="8" r="3"/>
+                                        <path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 11a3 3 0 1 0 0-6M15.5 15.2A5.4 5.4 0 0 1 20.5 20"/>
+                                    </svg>
+                                </span>
+                                <select id="passengers" name="passengers" required>
+                                    <option value="1">مسافر واحد</option>
+                                    <option value="2">مسافران</option>
+                                    <option value="3">3 مسافرين</option>
+                                    <option value="4">4 مسافرين</option>
+                                    <option value="5">5 مسافرين</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="search-button">
+                            <span>بحث عن رحلة</span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="11" cy="11" r="6.5"/>
+                                <path d="m16 16 5 5"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= QUICK DESTINATIONS ================= -->
+        <section class="destinations section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">وجهات مختارة</span>
+                        <h2>خطط لرحلتك القادمة</h2>
+                    </div>
+                    <a href="search.html" class="text-link">
+                        عرض الرحلات
+                        <span>←</span>
+                    </a>
+                </div>
+
+                <div class="destination-grid">
+                    <a href="search.html" class="destination-card destination-main">
+                        <div class="destination-overlay"></div>
+                        <div class="destination-content">
+                            <span>رحلة شائعة</span>
+                            <strong>الخرطوم <b>←</b> مدني</strong>
+                            <small>استكشف الرحلات المتاحة</small>
+                        </div>
+                    </a>
+
+                    <a href="search.html" class="destination-card destination-second">
+                        <div class="destination-overlay"></div>
+                        <div class="destination-content">
+                            <span>وجهة مميزة</span>
+                            <strong>الخرطوم <b>←</b> بورتسودان</strong>
+                            <small>احجز رحلتك بسهولة</small>
+                        </div>
+                    </a>
+
+                    <a href="search.html" class="destination-card destination-third">
+                        <div class="destination-overlay"></div>
+                        <div class="destination-content">
+                            <span>اكتشف المزيد</span>
+                            <strong>مدن السودان</strong>
+                            <small>اختر وجهتك وابدأ البحث</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FEATURES ================= -->
+        <section class="features section section-muted">
+            <div class="container">
+                <div class="center-heading">
+                    <span class="eyebrow">لماذا SudanTrip؟</span>
+                    <h2>تجربة حجز مصممة لتكون بسيطة</h2>
+                    <p>كل ما تحتاجه للوصول إلى رحلتك في خطوات واضحة وبدون تعقيد.</p>
+                </div>
+
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="4" y="3.5" width="16" height="17" rx="3"/>
+                                <path d="M8 8h8M8 12h5M8 16h8"/>
+                            </svg>
+                        </div>
+                        <span class="feature-number">01</span>
+                        <h3>حجز سهل</h3>
+                        <p>ابحث عن الرحلة المناسبة واحجزها بخطوات واضحة وسريعة.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M6 4.5h12v15H6z"/>
+                                <path d="M9 7.5h6M9 11.5h6M9 15.5h3"/>
+                            </svg>
+                        </div>
+                        <span class="feature-number">02</span>
+                        <h3>اختر مقعدك</h3>
+                        <p>شاهد المقاعد المتاحة واختر المكان الذي يناسبك قبل التأكيد.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 4.5h14v15H5z"/>
+                                <path d="M8 8h8M8 12h5M8 16h6"/>
+                            </svg>
+                        </div>
+                        <span class="feature-number">03</span>
+                        <h3>تذكرة رقمية</h3>
+                        <p>احتفظ ببيانات حجزك وتذكرتك في مكان واحد للرجوع إليها بسهولة.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M4 7h16v10H4z"/>
+                                <path d="M7 17v2M17 17v2M4 11h16M8 9h.01M16 9h.01"/>
+                            </svg>
+                        </div>
+                        <span class="feature-number">04</span>
+                        <h3>رحلات متعددة</h3>
+                        <p>ابحث بين المدن المتاحة واكتشف الرحلات التي تناسب تاريخك.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HOW IT WORKS ================= -->
+        <section class="how-it-works section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">كيف تعمل المنصة؟</span>
+                        <h2>من البحث إلى التذكرة في 4 خطوات</h2>
+                    </div>
+                    <p class="section-note">تجربة قصيرة، واضحة، ومباشرة.</p>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">01</span>
+                        <div>
+                            <h3>ابحث</h3>
+                            <p>حدد مدينة المغادرة والوجهة وتاريخ السفر.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">02</span>
+                        <div>
+                            <h3>اختر الرحلة</h3>
+                            <p>قارن الرحلات المتاحة واختر الأنسب لك.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">03</span>
+                        <div>
+                            <h3>اختر مقعدك</h3>
+                            <p>حدد المقعد الذي تفضله داخل الباص.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">04</span>
+                        <div>
+                            <h3>أكد الحجز</h3>
+                            <p>أدخل بياناتك واحصل على تذكرتك.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MANAGE BOOKING ================= -->
+        <section class="manage-booking">
+            <div class="container">
+                <div class="manage-card">
+                    <div class="manage-icon">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 5.5h14v13H5z"/>
+                            <path d="M8 9h8M8 13h5"/>
+                        </svg>
+                    </div>
+                    <div class="manage-copy">
+                        <span class="eyebrow">لديك حجز سابق؟</span>
+                        <h2>إدارة حجزك بسهولة</h2>
+                        <p>اعرض تفاصيل حجزك أو أدره باستخدام البيانات المرتبطة بالحجز.</p>
+                    </div>
+                    <a href="bookings.html" class="manage-button">
+                        إدارة حجزي
+                        <span>←</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="index.html" class="brand footer-brand">
+                    <span class="brand-mark">
+                        <span class="brand-mark-line"></span>
+                        <span class="brand-mark-dot"></span>
+                    </span>
+                    <span class="brand-copy">
+                        <strong>SudanTrip</strong>
+                        <small>رحلتك تبدأ من هنا</small>
+                    </span>
+                </a>
+
+                <div class="footer-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="search.html">البحث عن رحلة</a>
+                    <a href="bookings.html">إدارة حجزي</a>
+                    <a href="help.html">المساعدة</a>
+                </div>
+
+                <a href="admin/login.html" class="footer-admin">إدارة المنصة</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 SudanTrip. جميع الحقوق محفوظة.</p>
+                <p>منصة حجز رحلات الباصات داخل السودان</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Swap departure/destination without touching the existing app.js logic.
+        document.addEventListener("DOMContentLoaded", function () {
+            const swapButton = document.querySelector(".swap-button");
+            const fromCity = document.getElementById("fromCity");
+            const toCity = document.getElementById("toCity");
+
+            if (swapButton && fromCity && toCity) {
+                swapButton.addEventListener("click", function () {
+                    const fromValue = fromCity.value;
+                    fromCity.value = toCity.value;
+                    toCity.value = fromValue;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
