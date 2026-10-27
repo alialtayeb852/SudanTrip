@@ -1959,7 +1959,7 @@ select:focus-visible {
 /* تقليل المسافة بين كيف تعمل المنصة والفوتر */
 
 .how-it-works {
-    padding-bottom: 20px !important;
+    padding-bottom: 8px !important;
 }
 
 .site-footer {
